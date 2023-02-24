@@ -61,7 +61,7 @@ namespace Testing4
         public void ReleaseDateOK()
         {
             clsStock AStock = new clsStock();
-            //DateTime TestData = ;
+            //DateTime TestData = (2000, 9 ,10) ;
 
         }
 
