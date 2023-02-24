@@ -1,6 +1,7 @@
-using ClassLibrary;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using ClassLibrary;
 
 namespace Testing1
 {
@@ -30,8 +31,6 @@ namespace Testing1
         }
         //DateCreated - datetime
         [TestMethod]
-        public void DateCreatedOK()
-        {
             //Create an instance of the class we want to create
             clsCustomer AnAddress = new clsCustomer();
             //create some test data to assign to the property
