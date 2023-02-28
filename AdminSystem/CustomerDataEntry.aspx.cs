@@ -22,7 +22,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsCustomer
         clsCustomer AnCustomer = new clsCustomer();
-
         //capture the username
         AnCustomer.Username = TxtUsername.Text;
         AnCustomer.Password = txtPassword.Text;
