@@ -24,8 +24,19 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsCustomer AnCustomer = new clsCustomer();
         //capture the username
         AnCustomer.Username = TxtUsername.Text;
-        //store the address in the session object
+        AnCustomer.Password = txtPassword.Text;
+        AnCustomer.Email = txtEmail.Text;
+        //AnCustomer.DateAdded = txtDateCreated.Text;
+        AnCustomer.Verified = chkVerified.Checked;
+        //store the username in the session object
         Session["AnCustomer"] = AnCustomer;
+
+        //capture the username
+        //AnCustomer.Password = txtPassword.Text;
+        //store the username in the session object
+        //Session["AnCustomer"] = AnCustomer;
+
+
         //nav to the viewer page
         Response.Redirect("CustomerViewer.aspx");
     }
