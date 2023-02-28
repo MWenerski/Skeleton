@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace ClassLibrary
 {
@@ -14,5 +14,11 @@ namespace ClassLibrary
         public string Password { get; set; }
         public int CustomerID { get; set; }
         public string Username { get; set; }
+=======
+﻿namespace ClassLibrary
+{
+    public class clsCustomer
+    {
+        public string OrderID { get; set; }
     }
 }
