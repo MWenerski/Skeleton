@@ -15,6 +15,7 @@ namespace ClassLibrary
         public string Password { get; set; }
         public int CustomerID { get; set; }
         public string Username { get; set; }
+        public string OrderID { get; set; }
     }
     namespace ClassLibrary
     {

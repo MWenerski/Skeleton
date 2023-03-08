@@ -5,13 +5,13 @@ using System;
 namespace Testing2
 {
     [TestClass]
-    public class tstCustomer
+    public class tstOrder
     {
         [TestMethod]
         public void TestMethod1()
         {
-            clsCustomer ACustomer = new clsCustomer();
-            Assert.IsNotNull(ACustomer);
+            clsOrder AnOrder = new clsOrder();
+            Assert.IsNotNull(AnOrder);
         }
     }
 }
