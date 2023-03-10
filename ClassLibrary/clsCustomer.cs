@@ -88,7 +88,25 @@ namespace ClassLibrary
 
         public bool Find(int CustomerID)
         {
-            //set the private data members to the test data value
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerID", CustomerID);
+            DB.Execute("sproc_tblCustomer_SelectAll");
+            if (DB.Count == 1)
+            {
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[2]["CustomerID"]);
+                mUsername = Convert.ToString(DB.DataTable.Rows[2]["Username"]);
+                mPassword = Convert.ToString(DB.DataTable.Rows[2]["Password"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[2]["Email"]);
+                mVerified = Convert.ToBoolean(DB.DataTable.Rows[2]["Verified"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[2]["DateCreated"]);
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+
+            /*set the private data members to the test data value
             mCustomerID = 2;
             mUsername = "Knight98";
             mPassword = "12345";
@@ -97,6 +115,7 @@ namespace ClassLibrary
             mDateAdded = Convert.ToDateTime("16/9/2015");
             //always returns true
             return true;
+            */
         }
     }
 }

@@ -33,11 +33,29 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         //capture the username
         //AnCustomer.Password = txtPassword.Text;
+        //AnCustomer.DateAdded = txtDateAdded.Text.ToString();
         //store the username in the session object
         //Session["AnCustomer"] = AnCustomer;
 
 
         //nav to the viewer page
         Response.Redirect("CustomerViewer.aspx");
+    }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsCustomer AnCustomer = new clsCustomer();
+        Int32 CustomerID;
+        Boolean Found = false;
+        CustomerID = Convert.ToInt32(TxtCustomerID.Text);
+        Found = AnCustomer.Find(CustomerID);
+        if (Found = true) {
+            TxtCustomerID.Text = AnCustomer.CustomerID.ToString();
+            TxtUsername.Text = AnCustomer.Username;
+            txtPassword.Text = AnCustomer.Password;
+            txtEmail.Text = AnCustomer.Email;
+            chkVerified.Text = AnCustomer.Verified.ToString();
+            txtDateAdded.Text = AnCustomer.DateAdded.ToString();
+        }
     }
 }

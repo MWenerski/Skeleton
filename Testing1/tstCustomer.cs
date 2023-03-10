@@ -140,7 +140,7 @@ namespace Testing1
             Boolean OK = true;
             Int32 CustomerID = 2;
             Found = AnCustomer.Find(CustomerID);
-            if (AnCustomer.Username != "Knight98")
+            if (AnCustomer.Username != "Ryan")
             {
                 OK = false;
             }
@@ -156,7 +156,7 @@ namespace Testing1
             Boolean OK = true;
             Int32 CustomerID = 2;
             Found = AnCustomer.Find(CustomerID);
-            if (AnCustomer.Password != "12345")
+            if (AnCustomer.Password != "Renarlds")
             {
                 OK = false;
             }
@@ -172,7 +172,7 @@ namespace Testing1
             Boolean OK = true;
             Int32 CustomerID = 2;
             Found = AnCustomer.Find(CustomerID);
-            if (AnCustomer.Email != "knight98@gmail.com")
+            if (AnCustomer.Email != "RyanRenarlds@gmail.com")
             {
                 OK = false;
             }
@@ -204,7 +204,7 @@ namespace Testing1
             Boolean OK = true;
             Int32 CustomerID = 2;
             Found = AnCustomer.Find(CustomerID);
-            if (AnCustomer.DateAdded != Convert.ToDateTime("16/09/2015"))
+            if (AnCustomer.DateAdded != Convert.ToDateTime("06/02/2007 00:00:00"))
             {
                 OK = false;
             }
