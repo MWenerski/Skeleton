@@ -105,6 +105,7 @@ namespace Testing1
 
         //--------------------------------------------------------------
         //Find method
+        [TestMethod]
         public void FindMethodOK()
         {
             clsCustomer AnCustomer = new clsCustomer();
@@ -115,6 +116,7 @@ namespace Testing1
         }
 
         //Find CustomerID
+        [TestMethod]
         public void testCustomerIDFound()
         {
             clsCustomer AnCustomer = new clsCustomer();
@@ -130,6 +132,7 @@ namespace Testing1
         }
 
         //Find username
+        [TestMethod]
         public void testUsernameFound()
         {
             clsCustomer AnCustomer = new clsCustomer();
@@ -145,6 +148,7 @@ namespace Testing1
         }
 
         //Find password
+        [TestMethod]
         public void testPasswordFound()
         {
             clsCustomer AnCustomer = new clsCustomer();
@@ -160,6 +164,7 @@ namespace Testing1
         }
 
         //find Email
+        [TestMethod]
         public void testEmailFound()
         {
             clsCustomer AnCustomer = new clsCustomer();
@@ -175,6 +180,7 @@ namespace Testing1
         }
 
         //find verified
+        [TestMethod]
         public void testVerifiedFound()
         {
             clsCustomer AnCustomer = new clsCustomer();
@@ -190,6 +196,7 @@ namespace Testing1
         }
 
         //find dateAdded
+        [TestMethod]
         public void testDateAddedFound()
         {
             clsCustomer AnCustomer = new clsCustomer();

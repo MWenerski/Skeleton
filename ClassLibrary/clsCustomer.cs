@@ -83,6 +83,9 @@ namespace ClassLibrary
             }
         }
 
+        //
+        public string OrderID { get; set; }
+
         public bool Find(int CustomerID)
         {
             //set the private data members to the test data value
@@ -94,13 +97,6 @@ namespace ClassLibrary
             mDateAdded = Convert.ToDateTime("16/9/2015");
             //always returns true
             return true;
-        }
-    }
-    namespace ClassLibrary
-    {
-        public class clsCustomer
-        {
-            public string OrderID { get; set; }
         }
     }
 }
