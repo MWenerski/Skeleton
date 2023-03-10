@@ -23,7 +23,7 @@ namespace ClassLibrary
         {
             get 
             {
-                return mVerified
+                return mVerified;
             } 
             set 
             {
