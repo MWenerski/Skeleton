@@ -1,13 +1,14 @@
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using ClassLibrary;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Testing1
 {
     [TestClass]
     public class tstCustomer
     {
+        //test instantiation of the class clsCustomer
         [TestMethod]
         public void TestMethod1()
         {
@@ -17,6 +18,8 @@ namespace Testing1
             Assert.IsNotNull(AnCustomer);
 
         }
+
+        //test verified
         [TestMethod]
         public void VerifiedPropertyOK()
         {
@@ -29,8 +32,11 @@ namespace Testing1
             //test to see that the two values are the same
             Assert.AreEqual(AnAddress.Verified, TestData);
         }
+
         //DateCreated - datetime
         [TestMethod]
+        public void DateCreated()
+        {
             //Create an instance of the class we want to create
             clsCustomer AnAddress = new clsCustomer();
             //create some test data to assign to the property
@@ -40,7 +46,8 @@ namespace Testing1
             //test to see that the two values are the same
             Assert.AreEqual(AnAddress.DateAdded, TestData);
         }
-        //email, password, username - varchar(50)
+
+        //test email
         [TestMethod]
         public void EmailOK()
         {
@@ -53,6 +60,8 @@ namespace Testing1
             //test to see that the two values are the same
             Assert.AreEqual(AnAddress.Email, TestData);
         }
+
+        //test password
         [TestMethod]
         public void PasswordOK()
         {
@@ -65,6 +74,8 @@ namespace Testing1
             //test to see that the two values are the same
             Assert.AreEqual(AnAddress.Password, TestData);
         }
+
+        //test Username
         [TestMethod]
         public void UsernameOK()
         {
@@ -77,7 +88,8 @@ namespace Testing1
             //test to see that the two values are the same
             Assert.AreEqual(AnAddress.Username, TestData);
         }
-        //customerID - int
+
+        //test customerID - int
         [TestMethod]
         public void CustomerIDOK()
         {
@@ -89,6 +101,107 @@ namespace Testing1
             AnAddress.CustomerID = TestData;
             //test to see that the two values are the same
             Assert.AreEqual(AnAddress.CustomerID, TestData);
+        }
+
+        //--------------------------------------------------------------
+        //Find method
+        public void FindMethodOK()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Int32 CustomerID = 2;
+            Found = AnCustomer.Find(CustomerID);
+            Assert.IsTrue(Found);
+        }
+
+        //Find CustomerID
+        public void testCustomerIDFound()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerID = 2;
+            Found = AnCustomer.Find(CustomerID);
+            if (AnCustomer.CustomerID != 2)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        //Find username
+        public void testUsernameFound()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerID = 2;
+            Found = AnCustomer.Find(CustomerID);
+            if (AnCustomer.Username != "Knight98")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        //Find password
+        public void testPasswordFound()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerID = 2;
+            Found = AnCustomer.Find(CustomerID);
+            if (AnCustomer.Password != "12345")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        //find Email
+        public void testEmailFound()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerID = 2;
+            Found = AnCustomer.Find(CustomerID);
+            if (AnCustomer.Email != "knight98@gmail.com")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        //find verified
+        public void testVerifiedFound()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerID = 2;
+            Found = AnCustomer.Find(CustomerID);
+            if (AnCustomer.Verified != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        //find dateAdded
+        public void testDateAddedFound()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerID = 2;
+            Found = AnCustomer.Find(CustomerID);
+            if (AnCustomer.DateAdded != Convert.ToDateTime("16/09/2015"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
         }
     }
 }
