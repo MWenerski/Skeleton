@@ -22,18 +22,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsCustomer
         clsCustomer AnCustomer = new clsCustomer();
+
         //capture the username
         AnCustomer.Username = TxtUsername.Text;
         AnCustomer.Password = txtPassword.Text;
         AnCustomer.Email = txtEmail.Text;
-        //AnCustomer.DateAdded = txtDateCreated.Text;
+        //AnCustomer.DateAdded = txtDateAdded.Text.ToString();
         AnCustomer.Verified = chkVerified.Checked;
+
         //store the username in the session object
         Session["AnCustomer"] = AnCustomer;
 
-        //capture the username
-        //AnCustomer.Password = txtPassword.Text;
-        //AnCustomer.DateAdded = txtDateAdded.Text.ToString();
         //store the username in the session object
         //Session["AnCustomer"] = AnCustomer;
 
@@ -47,9 +46,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsCustomer AnCustomer = new clsCustomer();
         Int32 CustomerID;
         Boolean Found = false;
+        //System.FormatException: 'Input string was not in a correct format.'
         CustomerID = Convert.ToInt32(TxtCustomerID.Text);
         Found = AnCustomer.Find(CustomerID);
-        if (Found = true) {
+        if (Found == true) {
             TxtCustomerID.Text = AnCustomer.CustomerID.ToString();
             TxtUsername.Text = AnCustomer.Username;
             txtPassword.Text = AnCustomer.Password;
