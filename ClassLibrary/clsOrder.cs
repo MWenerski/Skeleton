@@ -20,5 +20,10 @@ namespace ClassLibrary
         public double GamePrice { get; set; }
         public double TotalPayable { get; set; }
         public int CustomerID { get; set; }
+
+        public bool Find(int testNo)
+        {
+            return true;
+        }
     }
 }

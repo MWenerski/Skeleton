@@ -121,5 +121,14 @@ namespace Testing2
             //test to see that the two values are the same
             Assert.AreEqual(AnOrder.CustomerID, TestData);
         }
+
+        public void FindMethodOK()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Int32 TestNo = 21;
+            Found = AnOrder.Find(TestNo);
+            Assert.IsTrue(Found);
+        }
     }
 }
