@@ -23,11 +23,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsCustomer
         clsCustomer AnCustomer = new clsCustomer();
 
-        //capture the username
+        //capture the data
+        AnCustomer.CustomerID = Convert.ToInt32(TxtCustomerID.Text);
         AnCustomer.Username = TxtUsername.Text;
         AnCustomer.Password = txtPassword.Text;
         AnCustomer.Email = txtEmail.Text;
-        //AnCustomer.DateAdded = txtDateAdded.Text.ToString();
+        //AnCustomer.DateAdded = txtDateAdded.Text;
+        AnCustomer.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
         AnCustomer.Verified = chkVerified.Checked;
 
         //store the username in the session object
