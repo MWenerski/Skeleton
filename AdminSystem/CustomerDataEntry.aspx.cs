@@ -24,23 +24,37 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsCustomer AnCustomer = new clsCustomer();
 
         //capture the data
-        AnCustomer.CustomerID = Convert.ToInt32(TxtCustomerID.Text);
-        AnCustomer.Username = TxtUsername.Text;
-        AnCustomer.Password = txtPassword.Text;
-        AnCustomer.Email = txtEmail.Text;
-        //AnCustomer.DateAdded = txtDateAdded.Text;
-        AnCustomer.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
-        AnCustomer.Verified = chkVerified.Checked;
+        string username = TxtUsername.Text;
+        string password = txtPassword.Text;
+        string email = txtEmail.Text;
+        string dateAdded = txtDateAdded.Text;
 
-        //store the username in the session object
-        Session["AnCustomer"] = AnCustomer;
+        //variable to store any error messages
+        string error = "";
 
-        //store the username in the session object
-        //Session["AnCustomer"] = AnCustomer;
+        //validate the data
+        error = AnCustomer.Valid(username, password, email, dateAdded);
+        if (error == "")
+        {
+            //capture the data
+            AnCustomer.CustomerID = Convert.ToInt32(TxtCustomerID.Text);
+            AnCustomer.Username = TxtUsername.Text;
+            AnCustomer.Password = txtPassword.Text;
+            AnCustomer.Email = txtEmail.Text;
+            AnCustomer.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
+            AnCustomer.Verified = chkVerified.Checked;
 
+            //store the username in the session object
+            Session["AnCustomer"] = AnCustomer;
 
-        //nav to the viewer page
-        Response.Redirect("CustomerViewer.aspx");
+            //nav to the viewer page
+            Response.Redirect("CustomerViewer.aspx");
+        }
+        else 
+        {
+            //display the error message
+            lblError.Text = error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
