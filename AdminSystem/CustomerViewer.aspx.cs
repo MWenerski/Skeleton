@@ -15,6 +15,8 @@ public partial class _1Viewer : System.Web.UI.Page
         //get the data from the session object
         AnCustomer = (clsCustomer) Session["AnCustomer"];
         //display the username, password, email for this entry
+        Response.Write(AnCustomer.CustomerID);
+        Response.Write("<br />");
         Response.Write(AnCustomer.Username);
         Response.Write("<br />");
         Response.Write(AnCustomer.Password);
@@ -22,5 +24,8 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write(AnCustomer.Email);
         Response.Write("<br />");
         Response.Write(AnCustomer.Verified);
+        Response.Write("<br />");
+        Response.Write(AnCustomer.DateAdded);
+        
     }
 }
