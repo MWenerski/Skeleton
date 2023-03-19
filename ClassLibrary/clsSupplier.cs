@@ -1,13 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
     public class clsSupplier
     {
-        public String SupplierName { get; set; }
+        public string SupplierName { get; set; }
+        public int ID { get; set; }
+        public string Email { get; set; }
+        public DateTime DateAdded { get; set; }
+        public int ContactNumber { get; set; }
+        public string Address { get; set; }
+        public bool OngoingContract { get; set; }
     }
 }
