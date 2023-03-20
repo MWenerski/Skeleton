@@ -21,8 +21,23 @@ namespace ClassLibrary
         public double TotalPayable { get; set; }
         public int CustomerID { get; set; }
 
-        public bool Find(int testNo)
+        private Int32 mOrderNo;
+
+        public Int32 OrderNo
         {
+            get
+            {
+               return mOrderNo;
+            }
+            set
+            {
+               mOrderNo = value;
+            }
+        }
+
+        public bool Find(int OrderNo)
+        {
+            mOrderNo = 21;
             return true;
         }
     }
