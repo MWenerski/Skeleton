@@ -5,10 +5,11 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Data.OleDb;
 using System.Data;
+//using ClassControlLib; -> class lib 
 
-///This class uses the ado.net sql classes to provide a connection to an sql server database.
+///This class uses the ado.net sql classes to provide a connection to an Azure sql server database.
 ///it is free for use by anybody so long as you give credit to the original author i.e me
-///Matthew Dean mjdean@dmu.ac.uk De Montfort University 2013
+///Matthew Dean mjdean@dmu.ac.uk De Montfort University 2019
 
 public class clsDataConnection
 {
@@ -16,7 +17,7 @@ public class clsDataConnection
     SqlConnection connectionToDB = new SqlConnection();
     //data adapter used to transfer data to and from the database
     SqlDataAdapter dataChannel = new SqlDataAdapter();
-    //ado.net class for building the sql commands
+    //ado.net class for building the sql commands    
     SqlCommandBuilder commandBuilder = new SqlCommandBuilder();
     //stores a list of all of the sql parameters
     List<SqlParameter> SQLParams = new List<SqlParameter>();
@@ -27,25 +28,14 @@ public class clsDataConnection
 
     public clsDataConnection()
     {
-        GetConString(GetDBName());
+        connectionString = GetConnectionString();
     }
 
-    public clsDataConnection(string DBLocation)
+    private string GetConnectionString()
     {
-        GetConString(DBLocation);
-    }
-
-
-    private string GetConString(string SomePath)
-    {
-        //build up the connection string for the sql server database Visual Studio 2010
-        //connectionString = "Data Source=.\\SQLEXPRESS;AttachDbFilename=" + GetDBName() + ";Integrated Security=True;User Instance=True";
-        //build up the connection string for the sql server database Visual Studio 2012
-        //connectionString = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=" + GetDBName() + ";Integrated Security=True;Connect Timeout=30";
-        //connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"" + GetDBName() + "\";Integrated Security=True;Connect Timeout=30";
-        connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"###\";Integrated Security=True;Connect Timeout=30";
-        connectionString = connectionString.Replace("###", SomePath);
-        return connectionString;
+        System.Net.WebClient client = new System.Net.WebClient();
+        string downloadString = client.DownloadString("http://localhost:5000/");
+        return downloadString;
     }
 
     public string GetDBName()
