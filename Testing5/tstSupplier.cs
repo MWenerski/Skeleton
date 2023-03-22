@@ -55,7 +55,7 @@ namespace Testing5
         public void ContactNumberPropertyOk()
         {
             clsSupplier InSupplier = new clsSupplier();
-            int TestData = 1;
+            string TestData = "";
             InSupplier.ContactNumber = TestData;
             Assert.AreEqual(InSupplier.ContactNumber, TestData);
         }
@@ -74,6 +74,52 @@ namespace Testing5
             bool TestData = true;
             InSupplier.OngoingContract = TestData;
             Assert.AreEqual(InSupplier.OngoingContract, TestData);
+        }
+        [TestMethod]
+        public void FindMethodOk()
+        {
+            clsSupplier InSupplier = new clsSupplier();
+            bool Found = false;
+            int ID = 2;
+            Found = InSupplier.Find(ID);
+            Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void TestIDFound()
+        {
+            clsSupplier InSupplier = new clsSupplier();
+            //boolean variable to store the result of the research
+            bool Found = false;
+            //boolean variable to record if data is OK
+            bool OK = true;
+            int ID = 2;
+            Found = InSupplier.Find(ID);
+            //Check the ID
+            if (InSupplier.ID != 2)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestSupplierNameFound()
+        {
+            clsSupplier InSupplier = new clsSupplier();
+            //boolean variable to store the result of the research
+            bool Found = false;
+            //boolean variable to record if data is OK
+            bool OK = true;
+            //creqte some test data to use with the method
+            int ID = 2;
+            Found = InSupplier.Find(ID);
+            //Check the ID
+            if (InSupplier.SupplierName != "name")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
         }
 
 
