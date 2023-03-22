@@ -18,13 +18,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsSupplier
         clsSupplier InSupplier = new clsSupplier();
         //capture the supplier name
-        InSupplier.ID = Convert.ToInt32(txtSupplierID);
+        InSupplier.ID = Convert.ToInt32(txtSupplierID.Text);
         InSupplier.SupplierName = txtSupplierName.Text;
         InSupplier.Email = txtEmail.Text;
-        InSupplier.DateAdded = Convert.ToDateTime(txtDateAdded);
+        InSupplier.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
         InSupplier.ContactNumber = txtContactNumber.Text;
         InSupplier.Address = txtAddress.Text;
-        InSupplier.OngoingContract = Convert.ToBoolean(chkOngoingContract);
+        InSupplier.OngoingContract = chkOngoingContract.Checked;
 
         //store the address in the session object
         Session["InSupplier"] = InSupplier;
