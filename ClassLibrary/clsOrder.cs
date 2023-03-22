@@ -8,9 +8,33 @@ namespace ClassLibrary
         {
         }
 
-        public bool Active { get; set; }
+        private Boolean mActive;
 
-        public string OrderID { get; set; }
+        public Boolean Active
+        {
+            get
+            {
+                return mActive;
+            }
+            set
+            {
+                mActive = value;
+            }
+        }
+
+        private string mOrderID;
+        public string OrderID
+        {
+            get
+            {
+                return mOrderID;
+            }
+            set
+            {
+                mOrderID = value;
+            }
+        }
+        private DateTime mDateAdded;
         public DateTime DateAdded { get; set; }
         public int Quantity { get; set; }
         public double TotalPrice { get; set; }
