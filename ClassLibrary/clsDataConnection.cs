@@ -1,4 +1,5 @@
-﻿using System;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -30,6 +31,7 @@ public class clsDataConnection
     {
         connectionString = GetConnectionString();
     }
+
 
     private string GetConnectionString()
     {
@@ -149,6 +151,26 @@ public class clsDataConnection
         SQLParams.Add(AParam);
     }
 
+
+    public bool checkConnectionDB()
+    {
+        //initialise the connection to the database
+        connectionToDB = new SqlConnection(connectionString);
+        //open the database
+
+        try
+        {
+            connectionToDB.Open();
+        }
+        catch(SqlException e)
+        {
+            return false;
+        }
+
+        return true;
+
+    }
+
     public Int32 Execute(string SProcName)
     {
         ///public method used to execute the named stored procedure
@@ -214,3 +236,4 @@ public class clsDataConnection
         }
     }
 }
+
