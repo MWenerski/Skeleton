@@ -121,6 +121,102 @@ namespace Testing5
             //test to see that the result is correct
             Assert.IsTrue(OK);
         }
+        [TestMethod]
+        public void TestEmailFound()
+        {
+            clsSupplier InSupplier = new clsSupplier();
+            //boolean variable to store the result of the research
+            bool Found = false;
+            //boolean variable to record if data is OK
+            bool OK = true;
+            //creqte some test data to use with the method
+            int ID = 2;
+            Found = InSupplier.Find(ID);
+            //Check the ID
+            if (InSupplier.Email != "email")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestDateAddedFound()
+        {
+            clsSupplier InSupplier = new clsSupplier();
+            //boolean variable to store the result of the research
+            bool Found = false;
+            //boolean variable to record if data is OK
+            bool OK = true;
+            //creqte some test data to use with the method
+            int ID = 2;
+            Found = InSupplier.Find(ID);
+            //Check the ID
+            if (InSupplier.DateAdded != Convert.ToDateTime("22/03/2023"))
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestContactNumberFound()
+        {
+            clsSupplier InSupplier = new clsSupplier();
+            //boolean variable to store the result of the research
+            bool Found = false;
+            //boolean variable to record if data is OK
+            bool OK = true;
+            //creqte some test data to use with the method
+            int ID = 2;
+            Found = InSupplier.Find(ID);
+            //Check the ID
+            if (InSupplier.ContactNumber != "ContactNumber")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestAddressFound()
+        {
+            clsSupplier InSupplier = new clsSupplier();
+            //boolean variable to store the result of the research
+            bool Found = false;
+            //boolean variable to record if data is OK
+            bool OK = true;
+            //creqte some test data to use with the method
+            int ID = 2;
+            Found = InSupplier.Find(ID);
+            //Check the ID
+            if (InSupplier.Address != "Address")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestOngoingContractFound()
+        {
+            clsSupplier InSupplier = new clsSupplier();
+            //boolean variable to store the result of the research
+            bool Found = false;
+            //boolean variable to record if data is OK
+            bool OK = true;
+            //creqte some test data to use with the method
+            int ID = 2;
+            Found = InSupplier.Find(ID);
+            //Check the ID
+            if (InSupplier.OngoingContract != true)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
 
 
     }
