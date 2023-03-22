@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,7 @@ public class clsDataConnection
         connectionString = GetConnectionString();
     }
 
-   
+
     private string GetConnectionString()
     {
         System.Net.WebClient client = new System.Net.WebClient();
@@ -150,6 +151,7 @@ public class clsDataConnection
         SQLParams.Add(AParam);
     }
 
+
     public bool checkConnectionDB()
     {
         //initialise the connection to the database
@@ -168,6 +170,7 @@ public class clsDataConnection
         return true;
 
     }
+
     public Int32 Execute(string SProcName)
     {
         ///public method used to execute the named stored procedure
@@ -233,5 +236,4 @@ public class clsDataConnection
         }
     }
 }
-
 
