@@ -4,7 +4,22 @@ namespace ClassLibrary
 {
     public class clsStaff
     {
-        public int staffId { get; }
+        public int staffId
+        {
+            get
+            {
+                return mstaffId;
+            }
+            set
+            {
+                mstaffId = value;
+            }
+        }
+
+
+        private int mstaffId;
+       
+
         private bool mAvailableToWork;
         public bool availableToWork
         {
@@ -81,9 +96,30 @@ namespace ClassLibrary
 
         public bool Find(int staffId)
         {
-            //Dummy
-            staffId = 15;
-            return true;
+            //Create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //Addthe parameter for the staffId no to search for
+            DB.addParameter("@StaffId", staffId);
+            //Execute the stored procedure
+            DB.Execute("sproc_tblStaff_FilterByStaffId");
+            //If one record is found
+            if (DB.Count == 1)
+            {
+                //Copy the data from the database to the private date members
+                mstaffId = Convert.ToInt32(DB.DataTable.Rows[0]["StaffId"]);
+                mHourlyWage = Convert.ToDouble(DB.DataTables.Rows[0]["HourlyWage"]);
+                mHoursWorked = Convert.ToDouble(DB.DataTables.Rows[0]["HoursWorked"]);
+                mPhoneNumber = Convert.ToString(DB.DataTables.Rows[0]["PhoneNumber"]);
+                mName = Convert.ToString(DB.DataTables.Rows[0]["StaffName"]);
+                mDateStarted = Convert.ToDateTime(DB.DataTables.Rows[0]["DateJoined"]);
+                mAvailableToWork = Convert.ToBoolean(DB.DataTables.Rows[0]["AvailableToWork"]);
+
+                return true;
+            } else
+            {
+                return false;
+            }
+
         }
     }
 }
