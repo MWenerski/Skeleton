@@ -86,6 +86,14 @@ namespace ClassLibrary
         //
         public string OrderID { get; set; }
 
+        // Added 22/03/2023
+
+        public bool CheckDataBase()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            return DB.checkConnectionDB();
+        }
+
         public bool Find(int CustomerID)
         {
             //connection string

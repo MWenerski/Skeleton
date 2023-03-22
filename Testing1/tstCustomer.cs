@@ -13,9 +13,21 @@ namespace Testing1
         string Password = "password";
         string Email = "Gamer24@gmail.com";
         string DateAdded = DateTime.Now.ToString();
-        
-        
-        
+
+        // Added 22/02/2023
+
+        [TestMethod]
+        public void TestMethodDB()
+        {
+            //Create an instance of the class we want to create
+            clsCustomer AnCustomer = new clsCustomer();
+            bool r = AnCustomer.CheckDataBase();
+
+            //test to see that it exists
+            Assert.IsTrue(r);
+
+        }
+
         //test instantiation of the class clsCustomer
         [TestMethod]
         public void TestMethod1()
@@ -311,7 +323,7 @@ namespace Testing1
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(-100);
-            string DateAdded = TestDate.ToString();
+            string DateAdded = TestDate.ToShortDateString();
             error = AnCustomer.Valid(Username, Password, Email, DateAdded);
             Assert.AreEqual(error, "");
         }
