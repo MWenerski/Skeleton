@@ -122,6 +122,7 @@ namespace Testing2
             Assert.AreEqual(AnOrder.CustomerID, TestData);
         }
 
+        [TestMethod]
         public void FindMethodOK()
         {
             clsOrder AnOrder = new clsOrder();
@@ -129,6 +130,21 @@ namespace Testing2
             Int32 TestNo = 21;
             Found = AnOrder.Find(TestNo);
             Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestOrderNoFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderNo = 21;
+            Found = AnOrder.Find(OrderNo);
+            if (AnOrder.OrderNo != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
         }
     }
 }
