@@ -9,6 +9,7 @@ namespace Testing1
     public class tstCustomer
     {
         //good test data
+        //int CustomerID = 17;
         string Username = "Gamer24";
         string Password = "password";
         string Email = "Gamer24@gmail.com";
@@ -130,7 +131,7 @@ namespace Testing1
         {
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
-            Int32 CustomerID = 6;
+            Int32 CustomerID = 17;
             Found = AnCustomer.Find(CustomerID);
             Assert.IsTrue(Found);
         }
@@ -142,9 +143,9 @@ namespace Testing1
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerID = 6;
+            Int32 CustomerID = 17;
             Found = AnCustomer.Find(CustomerID);
-            if (AnCustomer.CustomerID != 6)
+            if (AnCustomer.CustomerID != 17)
             {
                 OK = false;
             }
@@ -158,7 +159,7 @@ namespace Testing1
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerID = 6;
+            Int32 CustomerID = 17;
             Found = AnCustomer.Find(CustomerID);
             if (AnCustomer.Username != "Bad")
             {
@@ -174,7 +175,7 @@ namespace Testing1
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerID = 6;
+            Int32 CustomerID = 17;
             Found = AnCustomer.Find(CustomerID);
             if (AnCustomer.Password != "Man")
             {
@@ -190,7 +191,7 @@ namespace Testing1
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerID = 6;
+            Int32 CustomerID = 17;
             Found = AnCustomer.Find(CustomerID);
             if (AnCustomer.Email != "BM@gmail.com")
             {
@@ -206,7 +207,7 @@ namespace Testing1
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerID = 6;
+            Int32 CustomerID = 17;
             Found = AnCustomer.Find(CustomerID);
             if (AnCustomer.Verified != true)
             {
@@ -222,9 +223,9 @@ namespace Testing1
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerID = 2;
+            Int32 CustomerID = 17;
             Found = AnCustomer.Find(CustomerID);
-            if (AnCustomer.DateAdded != Convert.ToDateTime("001/01/2001"))
+            if (AnCustomer.DateAdded != Convert.ToDateTime("01/01/2001"))
             {
                 OK = false;
             }

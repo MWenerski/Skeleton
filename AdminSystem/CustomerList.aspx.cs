@@ -23,4 +23,9 @@ public partial class _1_List : System.Web.UI.Page
         lstCustomerList.DataValueField = "Username";
         lstCustomerList.DataBind();
     }
+
+    protected void lstCustomerList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }
