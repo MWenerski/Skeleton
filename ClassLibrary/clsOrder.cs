@@ -146,21 +146,30 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int OrderNo)
+        public bool Find(int orderID)
         {
-            mActive = true;
-            mDateAdded = Convert.ToDateTime("16/09/2015");
-            mOrderDate = Convert.ToDateTime("16/09/2015");
-            mQuantity = 4;
-            mGamePrice = 49.98;
-            mTotalPrice = 49.99;
-            mTotalPayable = 49.98;
-            mGameName = "sussy";
-            mOrderID = "343988";
-            mCustomerID = 4998;
-            mOrderNo = 21;
-            mInStock = true;
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@orderID", orderID);
+            DB.Execute("sproc_tblOrder_FilterByOrderID")
+            if(DB.Count == 1)
+            {
+                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                mGameName = Convert.ToString(DB.DataTable.Rows[0]["GameName"]);
+                mGamePrice = Convert.ToDouble(DB.DataTable.Rows[0]["GamePrice"]);
+                mInStock = Convert.ToBoolean(DB.DataTable.Rows[0]["InStock"]);
+                mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]); ;
+                mOrderID = Convert.ToString(DB.DataTable.Rows[0]["OrderID"]);
+                mOrderNo = Convert.ToInt32(DB.DataTable.Rows[0]["OrderNo"]);
+                mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["Quantity"]);
+                mTotalPayable = Convert.ToDouble(DB.DataTable.Rows[0]["TotalPayable"]);
+                mTotalPrice = Convert.ToDouble(DB.DataTable.Rows[0]["TotalPrice"]);
+                return true;
+            } else
+            {
+                return false;
+            }
         }
     }
 }
