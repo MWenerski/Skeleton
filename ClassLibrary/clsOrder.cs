@@ -150,20 +150,21 @@ namespace ClassLibrary
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@orderID", orderID);
-            DB.Execute("sproc_tblOrder_FilterByOrderID")
+            DB.Execute("sproc_tblOrder_FilterByOrderID");
+            
             if(DB.Count == 1)
             {
                 mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
-                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["customerID"]);
                 mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
                 mGameName = Convert.ToString(DB.DataTable.Rows[0]["GameName"]);
                 mGamePrice = Convert.ToDouble(DB.DataTable.Rows[0]["GamePrice"]);
                 mInStock = Convert.ToBoolean(DB.DataTable.Rows[0]["InStock"]);
-                mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]); ;
+                mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["orderDate"]); ;
                 mOrderID = Convert.ToString(DB.DataTable.Rows[0]["OrderID"]);
                 mOrderNo = Convert.ToInt32(DB.DataTable.Rows[0]["OrderNo"]);
                 mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["Quantity"]);
-                mTotalPayable = Convert.ToDouble(DB.DataTable.Rows[0]["TotalPayable"]);
+                mTotalPayable = Convert.ToDouble(DB.DataTable.Rows[0]["totalPaid"]);
                 mTotalPrice = Convert.ToDouble(DB.DataTable.Rows[0]["TotalPrice"]);
                 return true;
             } else
