@@ -34,6 +34,9 @@ namespace ClassLibrary
                 mOrderID = value;
             }
         }
+
+        
+
         private DateTime mDateAdded;
         public DateTime DateAdded {
             get
@@ -45,6 +48,70 @@ namespace ClassLibrary
                 mDateAdded = value;
             }
         }
+
+        public string Valid(string dateAdded, string quantity, string gamePrice, string orderPrice, string totalPayable, string gameName, string orderID, string customerID)
+        {
+            String Error = "";
+            if(gameName.Length == 0)
+            {
+                Error = Error + "The game name cannot be blank. ";
+            } if (gameName.Length > 50)
+            {
+                Error = Error + "The game length is too long. ";
+            }
+            DateTime DateTemp;
+            try
+            {
+
+                DateTemp = Convert.ToDateTime(dateAdded);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past. ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future. ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was invalid. ";
+            }
+            if (quantity.Length < 1 || quantity.Length > 1)
+            {
+                Error += "The quantity must be between 1 and 9 inclusive. ";
+            }
+            if (customerID.Length > 8 || customerID.Length < 8)
+            {
+                Error += "Customer ID is not 8 digits.";
+            }
+            if (orderID.Length < 1 || orderID.Length > 9)
+            {
+                Error += "Order ID is the wrong length.";
+            }
+            Double PayableTemp = Convert.ToDouble(totalPayable);
+            if (PayableTemp == 0 || PayableTemp > 10000)
+            {
+                Error += "The total payable doesn't seem right.";
+            }
+            Double OrderPriceTemp = Convert.ToDouble(orderPrice);
+            if (orderPrice.Length == 0 || orderPrice.Length > 6)
+            {
+                Error += "It seems like there is a discrepancy in the orderPrice.";
+            }
+            if (gamePrice.Length == 0 || gamePrice.Length > 5)
+            {
+                Error += "The game price doesn't seem right.";
+            }
+            return Error;
+        }
+
+        public bool CheckDataBase()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            return DB.checkConnectionDB();
+        }
+
         private int mQuantity;
         public int Quantity {
             get
@@ -133,16 +200,16 @@ namespace ClassLibrary
                 mCustomerID = value;
             }
         }
-        private Int32 mOrderNo;
-        public Int32 OrderNo
+        private Double mOrderPrice;
+        public Double OrderPrice
         {
             get
             {
-               return mOrderNo;
+               return mOrderPrice;
             }
             set
             {
-               mOrderNo = value;
+               mOrderPrice = value;
             }
         }
 
@@ -156,16 +223,16 @@ namespace ClassLibrary
             {
                 mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
                 mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["customerID"]);
-                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
-                mGameName = Convert.ToString(DB.DataTable.Rows[0]["GameName"]);
-                mGamePrice = Convert.ToDouble(DB.DataTable.Rows[0]["GamePrice"]);
-                mInStock = Convert.ToBoolean(DB.DataTable.Rows[0]["InStock"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["dateAdded"]);
+                mGameName = Convert.ToString(DB.DataTable.Rows[0]["gameName"]);
+                mGamePrice = Convert.ToDouble(DB.DataTable.Rows[0]["gamePrice"]);
+                mInStock = Convert.ToBoolean(DB.DataTable.Rows[0]["inStock"]);
                 mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["orderDate"]); ;
-                mOrderID = Convert.ToString(DB.DataTable.Rows[0]["OrderID"]);
-                mOrderNo = Convert.ToInt32(DB.DataTable.Rows[0]["OrderNo"]);
-                mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["Quantity"]);
+                mOrderID = Convert.ToString(DB.DataTable.Rows[0]["orderID"]);
+                mOrderPrice = Convert.ToInt32(DB.DataTable.Rows[0]["orderPrice"]);
+                mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["quantity"]);
                 mTotalPayable = Convert.ToDouble(DB.DataTable.Rows[0]["totalPaid"]);
-                mTotalPrice = Convert.ToDouble(DB.DataTable.Rows[0]["TotalPrice"]);
+                mTotalPrice = Convert.ToDouble(DB.DataTable.Rows[0]["totalPrice"]);
                 return true;
             } else
             {
