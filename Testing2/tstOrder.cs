@@ -268,7 +268,7 @@ namespace Testing2
             //invoke the method
             Error = AnOrder.Valid(DateAdded, Quantity, GamePrice, OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
 
@@ -565,8 +565,8 @@ namespace Testing2
         {
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
-            Int32 TestNo = 21;
-            Found = AnOrder.Find(TestNo);
+            Int32 OrderID = 21;
+            Found = AnOrder.Find(OrderID);
             Assert.IsTrue(Found);
         }
 
