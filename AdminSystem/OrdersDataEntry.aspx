@@ -36,6 +36,8 @@
             <asp:Label ID="Label9" runat="server" Text="Game Price" width="91px"></asp:Label>
             <asp:TextBox ID="txtGamePrice" runat="server"></asp:TextBox>
         </p>
+            <asp:Label ID="lblGameName" runat="server" Text="Game Name" width="91px"></asp:Label>
+            <asp:TextBox ID="txtGameName" runat="server"></asp:TextBox>
         <asp:CheckBox ID="chkInStock" runat="server" Text="In Stock?" />
         <p>
             <asp:Label ID="lblError" runat="server"></asp:Label>
@@ -43,6 +45,7 @@
         <p>
             <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
             <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
         </p>
     </form>
 </body>
