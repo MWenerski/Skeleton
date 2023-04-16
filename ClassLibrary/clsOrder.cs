@@ -64,11 +64,11 @@ namespace ClassLibrary
             {
 
                 DateTemp = Convert.ToDateTime(dateAdded);
-                if (DateTemp < DateTime.Now.Date)
+                if (DateTemp < DateTime.Today.Date)
                 {
                     Error = Error + "The date cannot be in the past. ";
                 }
-                if (DateTemp > DateTime.Now.Date)
+                if (DateTemp > DateTime.Today.Date)
                 {
                     Error = Error + "The date cannot be in the future. ";
                 }
@@ -99,6 +99,7 @@ namespace ClassLibrary
             {
                 Error += "It seems like there is a discrepancy in the orderPrice.";
             }
+            Double OrderGamePriceTemp = Convert.ToDouble(gamePrice);
             if (gamePrice.Length == 0 || gamePrice.Length > 5)
             {
                 Error += "The game price doesn't seem right.";
