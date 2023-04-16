@@ -13,8 +13,8 @@ namespace Testing2
         string OrderPrice = "104.97";
         string TotalPayable = "104.97";
         string GameName = "Ori and the Will of the Wisps";
-        string OrderID = "238";
-        string CustomerID = "u2728ehb";
+        string OrderID = "jnh3u2";
+        string CustomerID = "00000001";
 
         [TestMethod]
         public void TestMethodIsNotNull()
@@ -119,8 +119,8 @@ namespace Testing2
             Assert.AreNotEqual(Error, "");
         }
 
-        
-        
+
+
         [TestMethod]
         public void GameNameMin()
         {
@@ -133,6 +133,20 @@ namespace Testing2
             Error = AnOrder.Valid(DateAdded, Quantity, GamePrice, OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void GameNameMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string GameName = ""; //this should not be ok
+            //invoke the method
+            Error = AnOrder.Valid(DateAdded, Quantity, GamePrice, OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -156,7 +170,7 @@ namespace Testing2
             clsOrder AnOrder = new clsOrder();            //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string GameName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            string GameName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
             //invoke the method
             Error = AnOrder.Valid(DateAdded, Quantity, GamePrice, OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
             //test to see that the result is correct
@@ -381,7 +395,7 @@ namespace Testing2
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             String Error = "";
-            Int32 testTotalPayable = 10000;
+            Int32 testTotalPayable = 10001;
             string TotalPayable = testTotalPayable.ToString();
             Error = AnOrder.Valid(DateAdded, Quantity, GamePrice, OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
             Assert.AreNotEqual(Error, "");
