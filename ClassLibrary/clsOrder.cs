@@ -55,7 +55,8 @@ namespace ClassLibrary
             if(gameName.Length == 0)
             {
                 Error = Error + "The game name cannot be blank. ";
-            } if (gameName.Length > 50)
+            } 
+            if (gameName.Length > 50)
             {
                 Error = Error + "The game length is too long. ";
             }
@@ -77,30 +78,61 @@ namespace ClassLibrary
             {
                 Error = Error + "The date was invalid. ";
             }
-            if (quantity.Length < 1 || quantity.Length > 1)
+            try
             {
-                Error += "The quantity must be between 1 and 9 inclusive. ";
+                if (quantity.Length != 1)
+                {
+                    Error += "The quantity must be between 1 and 9 inclusive. ";
+                }
+            } catch
+            {
+                Error += " The quantity was invalid.";
             }
-            if (customerID.Length > 8 || customerID.Length < 8)
+            try
             {
-                Error += "Customer ID is not 8 digits.";
+                if (customerID.Length > 8 || customerID.Length < 8)
+                {
+                    Error += "Customer ID is not 8 digits.";
+                }
+            }catch
+            {
+                Error += " The customer ID is invalid.";
             }
             if (orderID.Length < 1 || orderID.Length > 9)
             {
                 Error += "Order ID is the wrong length.";
             }
-            Double PayableTemp = Convert.ToDouble(totalPayable);
-            if (PayableTemp == 0 || PayableTemp > 10000)
+            try
+            {
+                Double PayableTemp = Convert.ToDouble(totalPayable);
+                if (PayableTemp == 0 || PayableTemp > 10000)
+                {
+                    Error += "The total payable doesn't seem right.";
+                }
+            } catch
             {
                 Error += "The total payable doesn't seem right.";
             }
-            Double OrderPriceTemp = Convert.ToDouble(orderPrice);
-            if (orderPrice.Length == 0 || orderPrice.Length > 6)
+            
+            try
             {
-                Error += "It seems like there is a discrepancy in the orderPrice.";
+                Double OrderPriceTemp = Convert.ToDouble(orderPrice);
+                if (orderPrice.Length == 0 || orderPrice.Length > 6)
+                {
+                    Error += "It seems like there is a discrepancy in the orderPrice.";
+                }
+            } catch
+            {
+                Error += " The orderPrice doesn't seem right.";
             }
-            Double OrderGamePriceTemp = Convert.ToDouble(gamePrice);
-            if (gamePrice.Length == 0 || gamePrice.Length > 5)
+            try
+            {
+                Double GamePriceTemp = Convert.ToDouble(gamePrice);
+                if (gamePrice.Length == 0 || gamePrice.Length > 5)
+                {
+                    Error += "The game price doesn't seem right.";
+                }
+            } catch
             {
                 Error += "The game price doesn't seem right.";
             }
