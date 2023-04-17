@@ -346,7 +346,7 @@ namespace Testing2
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             String Error = "";
-            Double testOrderPrice = 10000.99;
+            Double testOrderPrice = 1000.99;
             string OrderPrice = testOrderPrice.ToString();
             Error = AnOrder.Valid(DateAdded, Quantity, GamePrice, OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
             Assert.AreNotEqual(Error, "");
@@ -363,6 +363,19 @@ namespace Testing2
             string TotalPayable = testTotalPayable.ToString();
             Error = AnOrder.Valid(DateAdded, Quantity, GamePrice, OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
             Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TotalPayableMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            Int32 testTotalPayable = 10001;
+            string TotalPayable = testTotalPayable.ToString();
+            Error = AnOrder.Valid(DateAdded, Quantity, GamePrice, OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
+            Assert.AreNotEqual(Error, "");
+
         }
 
         [TestMethod]
@@ -383,24 +396,12 @@ namespace Testing2
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             String Error = "";
-            Double testGamePrice = 50.00;
+            Double testGamePrice = 500.00;
             string GamePrice = testGamePrice.ToString();
             Error = AnOrder.Valid(DateAdded, Quantity, GamePrice, OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
             Assert.AreEqual(Error, "");
         }
 
-        [TestMethod]
-        public void TotalPayableMaxPlusOne()
-        {
-            //create an instance of the class we want to create
-            clsOrder AnOrder = new clsOrder();
-            String Error = "";
-            Int32 testTotalPayable = 10001;
-            string TotalPayable = testTotalPayable.ToString();
-            Error = AnOrder.Valid(DateAdded, Quantity, GamePrice, OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
-            Assert.AreNotEqual(Error, "");
-
-        }
 
         [TestMethod]
         public void OrderIDMid()
@@ -436,7 +437,7 @@ namespace Testing2
             clsOrder AnOrder = new clsOrder();            //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string OrderID = "72617"; //this should be ok
+            string OrderID = "72617123"; //this should be ok
             //invoke the method
             Error = AnOrder.Valid(DateAdded, Quantity, GamePrice, OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
             //test to see that the result is correct
@@ -450,10 +451,17 @@ namespace Testing2
             clsOrder AnOrder = new clsOrder();            //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string CustomerID = "7183718992";//invoke the method
+            string CustomerID = "718371892";//invoke the method
             Error = AnOrder.Valid(DateAdded, Quantity, GamePrice, OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CheckDataBase()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            Assert.AreEqual(true, DB.checkConnectionDB());
         }
 
         [TestMethod]
