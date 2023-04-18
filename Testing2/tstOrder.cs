@@ -119,7 +119,17 @@ namespace Testing2
             Assert.AreNotEqual(Error, "");
         }
 
-
+        [TestMethod]
+        public void QuantityBadDataType()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string testQuantity = "sus";
+            string Quantity = testQuantity;
+            Error = AnOrder.Valid(DateAdded, Quantity, GamePrice, OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
+            Assert.AreNotEqual(Error, "");
+        }
 
         [TestMethod]
         public void GameNameMin()
@@ -327,6 +337,18 @@ namespace Testing2
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
+
+        [TestMethod]
+        public void DateAddedBadType()
+        {
+            clsOrder AnOrder = new clsOrder();
+            string Error = "";
+            String TestDate = "sus";
+            string DateAdded = TestDate.ToString();
+            Error = AnOrder.Valid(DateAdded, Quantity, GamePrice, OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
         
         [TestMethod]
         public void OrderPriceMid()
@@ -472,9 +494,39 @@ namespace Testing2
             Error = AnOrder.Valid(DateAdded, Quantity, GamePrice, OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
             Assert.AreEqual(Error, "");
         }
-
+        
         [TestMethod]
-        public void ActivePropertyOK()
+        public void AddMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            //create the item of test data
+            clsOrder TestItem = new clsOrder();
+            //var to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.CustomerID = 28478192;
+            TestItem.GameName = "test";
+            TestItem.OrderDate = DateTime.Today.Date;
+            TestItem.GamePrice = 24.44;
+            TestItem.InStock = true;
+            TestItem.OrderID = 23674;
+            TestItem.OrderlineId = 22;
+            TestItem.OrderPrice = 69.42;
+            TestItem.Quantity = 3;
+            TestItem.TotalPayable = 34.4;
+            //set ThisAddress to the test data
+            AllOrders.ThisOrder = TestItem; //add the record
+            PrimaryKey = AllOrders.Add();
+            //set the primary key of the test data
+            TestItem.OrderID = PrimaryKey;
+            //find the record
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            //test to see that the two values are the same Assert. AreEqual(AllAddresses. ThisAddress, TestItem);
+        }
+        
+        [TestMethod]
+        public void InStockPropertyOK()
         {
             clsOrder AnOrder = new clsOrder();
             Boolean TestData = true;

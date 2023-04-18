@@ -22,9 +22,13 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write("<br />");
         Response.Write(AnOrder.Quantity);
         Response.Write("<br />");
-        Response.Write(AnOrder.TotalPrice);
+        Response.Write(AnOrder.OrderPrice);
         Response.Write("<br />");
         Response.Write(AnOrder.GamePrice);
         Response.Write("<br />");
+        Response.Write(AnOrder.GameName);
+        Response.Write("<br />");
+        Response.Write(AnOrder.InStock);
+        
     }
 }

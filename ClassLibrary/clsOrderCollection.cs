@@ -6,6 +6,7 @@ namespace ClassLibrary
     public class clsOrderCollection
     {
         List<clsOrder> mOrderList = new List<clsOrder>();
+        clsOrder mThisOrder = new clsOrder();
         public List<clsOrder> OrderList { get
             {
                 return mOrderList;
@@ -19,14 +20,23 @@ namespace ClassLibrary
             }
             set { } }
 
-        public clsOrder ThisOrder { get; set; }
+        public clsOrder ThisOrder
+        {
+            get
+            {
+                return mThisOrder;
+            }
+            set
+            {
+                mThisOrder = value;
+            }
+        }
 
         public clsOrderCollection()
         {
             Int32 Index = 0;
             Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
-            //DB.Execute("sproc_tblOrder_FilterByOrderID");
             RecordCount = DB.Count;
             while (Index < RecordCount)
             {
@@ -44,6 +54,22 @@ namespace ClassLibrary
                 mOrderList.Add(AnOrder);
                 Index++;
             }
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@customerID", mThisOrder.CustomerID);
+            DB.AddParameter("@orderID", mThisOrder.OrderID);
+            DB.AddParameter("@orderDate", mThisOrder.OrderDate);
+            DB.AddParameter("@totalPaid", mThisOrder.TotalPayable);
+            DB.AddParameter("@quantity", mThisOrder.Quantity);
+            DB.AddParameter("@orderPrice", mThisOrder.OrderPrice);
+            DB.AddParameter("@gamePrice", mThisOrder.GamePrice);
+            DB.AddParameter("@game", mThisOrder.GameName);
+            DB.AddParameter("@inStock", mThisOrder.InStock);
+            DB.AddParameter("@orderlineId", mThisOrder.OrderlineId);
+            return DB.Execute("sproc_tblOrder_tblOrderLine_Insert");
         }
     }
 }
