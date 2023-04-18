@@ -7,6 +7,11 @@ namespace Testing3
     [TestClass]
     public class tstStaff
     {
+        string hourlyWage = "9";
+        string hoursWorked = "55";
+        string phoneNumber = "07960382145";
+        string name = "Bradley Walsh";
+
         [TestMethod]
         public void InstanceOk()
         {
@@ -63,9 +68,9 @@ namespace Testing3
             //Create some test data to assign to the property
             double testData = 9.50;
             //assign the data to the property
-            Staff1.hourlyWage = testData;
+            Staff1.HourlyWage = testData;
             //Test to see if the two values are the same
-            Assert.AreEqual(Staff1.hourlyWage, testData);
+            Assert.AreEqual(Staff1.HourlyWage, testData);
         }
         
         [TestMethod]
@@ -76,9 +81,9 @@ namespace Testing3
             //Create some test data to assign to the property
             double testData = 10.50;
             //assign the data to the property
-            Staff1.hoursWorked = testData;
+            Staff1.HoursWorked = testData;
             //Test to see if the two values are the same
-            Assert.AreEqual(Staff1.hoursWorked, testData);
+            Assert.AreEqual(Staff1.HoursWorked, testData);
         }
        
         [TestMethod]
@@ -89,9 +94,9 @@ namespace Testing3
             //Create some test data to assign to the property
             String testData = "John Smith";
             //assign the data to the property
-            Staff1.name = testData;
+            Staff1.Name = testData;
             //Test to see if the two values are the same
-            Assert.AreEqual(Staff1.name, testData);
+            Assert.AreEqual(Staff1.Name, testData);
         }
        
         [TestMethod]
@@ -108,7 +113,7 @@ namespace Testing3
             //Invoke the method
             found = aStaff.Find(staffId);
             //Check the staff id
-            if (aStaff.staffId != 1)
+            if (aStaff.StaffId != 1)
             {
                 OK = false;
             }
@@ -130,7 +135,7 @@ namespace Testing3
             //Invoke the method
             found = aStaff.Find(staffId);
             //Check the phone number
-            if (aStaff.phoneNumber != "06897 12345")
+            if (aStaff.PhoneNumber != "06897 12345")
             {
                 OK = false;
             }
@@ -152,7 +157,7 @@ namespace Testing3
             //Invoke the method
             found = aStaff.Find(staffId);
             //Check the hourly wage
-            if (aStaff.hourlyWage != 22)
+            if (aStaff.HourlyWage != 22)
             {
                 OK = false;
             }
@@ -174,7 +179,7 @@ namespace Testing3
             //Invoke the method
             found = aStaff.Find(staffId);
             //Check the hours worked
-            if (aStaff.hoursWorked != 2.5)
+            if (aStaff.HoursWorked != 2.5)
             {
                 OK = false;
             }
@@ -247,5 +252,35 @@ namespace Testing3
             //Test to see if the reuslt is correct
             Assert.IsTrue(OK);
         }
+
+        [TestMethod]
+        public void ValidMethodOk()
+        {
+            clsStaff aStaff = new clsStaff();
+            String Error = "";
+            Error = aStaff.Valid(hoursWorked, hourlyWage, phoneNumber, name);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void HoursWorkedMinLessOne()
+        {
+            clsStaff aStaff = new clsStaff();
+            String Error = "";
+            string hoursWorked = "";
+            Error = aStaff.Valid(hoursWorked, hourlyWage, phoneNumber, name);
+            Assert.AreEqual(Error, "");
+        }
+        
+        [TestMethod]
+        public void HoursWorkedMin()
+        {
+            clsStaff aStaff = new clsStaff();
+            String Error = "";
+            string hoursWorked = "0";
+            Error = aStaff.Valid(hoursWorked, hourlyWage, phoneNumber, name);
+            Assert.AreEqual(Error, "");
+        }
+
     }
 }

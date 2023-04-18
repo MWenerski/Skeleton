@@ -34,4 +34,25 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //Navigate to the the viewer page
         Response.Redirect("StaffViewer.aspx");
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsStaff aStaff = new clsStaff();
+        Int32 staffNo;
+        Boolean found = false;
+        staffNo = Convert.ToInt32(txtStaffId.Text);
+        found = aStaff.Find(staffNo);
+        if (found == true)
+        {
+            txtHourlyWage.Text = aStaff.hourlyWage.ToString();
+            txtHoursWorked.Text = aStaff.hoursWorked.ToString();
+            txtStaffName.Text = aStaff.name;
+            txtStaffPhoneNumber.Text = aStaff.phoneNumber;
+            chckAvailableToWork.Checked = aStaff.availableToWork;
+            cldrDateJoined.SelectedDate = aStaff.dateStarted;
+        } else
+        {
+            lblError.Text = "ERROR- DATA NOT FOUND!";
+        }
+    }
 }
