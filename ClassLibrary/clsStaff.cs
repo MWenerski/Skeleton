@@ -4,7 +4,7 @@ namespace ClassLibrary
 {
     public class clsStaff
     {
-        public int staffId
+        public int StaffId
         {
             get
             {
@@ -21,7 +21,7 @@ namespace ClassLibrary
        
 
         private bool mAvailableToWork;
-        public bool availableToWork
+        public bool AvailableToWork
         {
             get
             {
@@ -33,7 +33,7 @@ namespace ClassLibrary
             }
         }
         private DateTime mDateStarted;
-        public DateTime dateStarted
+        public DateTime DateStarted
         {
             get
             {
@@ -45,7 +45,7 @@ namespace ClassLibrary
             }
         }
         private String mPhoneNumber;
-        public string phoneNumber
+        public string PhoneNumber
         {
             get
             {
@@ -58,7 +58,7 @@ namespace ClassLibrary
             }
         }
         private double mHourlyWage;
-        public double hourlyWage
+        public double HourlyWage
         {
             get
             {
@@ -70,7 +70,7 @@ namespace ClassLibrary
             }
         }
         private double mHoursWorked;
-        public double hoursWorked
+        public double HoursWorked
         {
             get
             {
@@ -82,7 +82,7 @@ namespace ClassLibrary
             }
         }
         private string mName;
-        public string name
+        public string Name
         {
             get
             {
@@ -120,6 +120,17 @@ namespace ClassLibrary
                 return false;
             }
 
+        }
+        
+        public string Valid(string hoursWorked, string hourlyWage, string phoneNumber, string name)
+        {
+            String Error = "";
+            if (hoursWorked.Length == 0)
+            {
+                Error = Error + "Hours worked may be blank";
+            }
+
+            return Error;
         }
     }
 }
