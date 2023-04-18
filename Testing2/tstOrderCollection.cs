@@ -27,17 +27,15 @@ namespace Test_Framework
             clsOrderCollection AllOrders = new clsOrderCollection();
             List<clsOrder> TestList = new List<clsOrder>();
             clsOrder TestItem = new clsOrder();
-            TestItem.OrderID = "17yghs82h";
+            TestItem.OrderID = 5829834;
             TestItem.GameName = "john";
             TestItem.GamePrice = 24.99;
             TestItem.CustomerID = 9823;
             TestItem.OrderDate = DateTime.Now.Date;
             TestItem.InStock = true;
-            TestItem.Active = true;
             TestItem.OrderPrice = 24.99;
             TestItem.Quantity = 4;
             TestItem.TotalPayable = 24.99;
-            TestItem.TotalPrice = 24.99;
             TestList.Add(TestItem);
             AllOrders.OrderList = TestList;
             Assert.AreEqual(AllOrders.OrderList, TestList);
@@ -59,17 +57,15 @@ namespace Test_Framework
         {
             clsOrderCollection AllOrders = new clsOrderCollection();
             clsOrder TestOrder = new clsOrder();
-            TestOrder.OrderID = "17yghs82h";
+            TestOrder.OrderID = 8481934;
             TestOrder.GameName = "john";
             TestOrder.GamePrice = 24.99;
             TestOrder.CustomerID = 9823;
             TestOrder.OrderDate = DateTime.Now.Date;
             TestOrder.InStock = true;
-            TestOrder.Active = true;
             TestOrder.OrderPrice = 24.99;
             TestOrder.Quantity = 4;
             TestOrder.TotalPayable = 24.99;
-            TestOrder.TotalPrice = 24.99;
 
             AllOrders.ThisOrder = TestOrder;
             Assert.AreEqual(AllOrders.ThisOrder, TestOrder);
@@ -82,17 +78,15 @@ namespace Test_Framework
             clsOrderCollection AllOrders = new clsOrderCollection();
             List<clsOrder> TestList = new List<clsOrder>();
             clsOrder TestOrder = new clsOrder();
-            TestOrder.OrderID = "17yghs82h";
+            TestOrder.OrderID = 385823;
             TestOrder.GameName = "john";
             TestOrder.GamePrice = 24.99;
             TestOrder.CustomerID = 9823;
             TestOrder.OrderDate = DateTime.Now.Date;
             TestOrder.InStock = true;
-            TestOrder.Active = true;
             TestOrder.OrderPrice = 24.99;
             TestOrder.Quantity = 4;
             TestOrder.TotalPayable = 24.99;
-            TestOrder.TotalPrice = 24.99;
             TestList.Add(TestOrder);
             AllOrders.OrderList = TestList;
             Assert.AreEqual(AllOrders.Count, TestList.Count);

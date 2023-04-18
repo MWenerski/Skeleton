@@ -13,7 +13,7 @@ namespace Testing2
         string OrderPrice = "104.97";
         string TotalPayable = "104.97";
         string GameName = "Ori and the Will of the Wisps";
-        string OrderID = "jnh3u2";
+        string OrderID = "437932";
         string CustomerID = "00000001";
 
         [TestMethod]
@@ -28,7 +28,7 @@ namespace Testing2
         {
             clsOrder AnOrder = new clsOrder();
             String Error = "";
-            Int32 testQuantity = -1;
+            Int32 testQuantity = 0;
             string Quantity = testQuantity.ToString();
             Error = AnOrder.Valid(DateAdded, Quantity, GamePrice, OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
             Assert.AreNotEqual(Error, "");
@@ -42,7 +42,7 @@ namespace Testing2
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             String Error = "";
-            Int32 testQuantity = 0;
+            Int32 testQuantity = 1;
             string Quantity = testQuantity.ToString();
             Error = AnOrder.Valid(DateAdded, Quantity, GamePrice, OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
             Assert.AreEqual(Error, "");
@@ -55,7 +55,7 @@ namespace Testing2
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             String Error = "";
-            Int32 testQuantity = 1;
+            Int32 testQuantity = 2;
             string Quantity = testQuantity.ToString();
             Error = AnOrder.Valid(DateAdded, Quantity, GamePrice, OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
             Assert.AreEqual(Error, "");
@@ -410,7 +410,7 @@ namespace Testing2
             clsOrder AnOrder = new clsOrder();            //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string OrderID = "34hb1"; //this should be ok
+            string OrderID = "55555"; //this should be ok
             //invoke the method
             Error = AnOrder.Valid(DateAdded, Quantity, GamePrice, OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
             //test to see that the result is correct
@@ -424,7 +424,7 @@ namespace Testing2
             clsOrder AnOrder = new clsOrder();            //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string OrderID = "18hge282f1";//invoke the method
+            string OrderID = "1000000000";//invoke the method
             Error = AnOrder.Valid(DateAdded, Quantity, GamePrice, OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -525,9 +525,9 @@ namespace Testing2
             //create some test data to assign to the property
             Double TestData = 49.99;
             //assign the data to the property
-            AnOrder.TotalPrice = TestData;
+            AnOrder.OrderPrice = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnOrder.TotalPrice, TestData);
+            Assert.AreEqual(AnOrder.OrderPrice, TestData);
         }
 
         [TestMethod]
@@ -562,7 +562,7 @@ namespace Testing2
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
-            string TestData = "63Ue57A";
+            Int32 TestData = 873249;
             //assign the data to the property
             AnOrder.OrderID = TestData;
             //test to see that the two values are the same
@@ -600,34 +600,14 @@ namespace Testing2
             Boolean OK = true;
             Int32 OrderID = 2;
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.OrderID != "2")
+            if (AnOrder.OrderID != 2)
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
         }
 
-        [TestMethod]
-        public void TestDateFound()
-        {
-            //create an instance of the class we want to create
-            clsOrder AnOrder = new clsOrder();
-            //boolean variable to store the result of the search
-            Boolean Found = false;
-            //boolean variable to record if data is OK (assume it is)
-            Boolean OK = true;
-            //create some test data to use with the method
-            Int32 OrderID = 21;
-            //invoke the method
-            Found = AnOrder.Find(OrderID);
-            //check the property
-            if (AnOrder.DateAdded != Convert.ToDateTime("16/09/2015"))
-            {
-                OK = false;
-            }
-            //test to see that the result is correct
-            Assert.IsTrue(OK);
-        }
+        
 
         [TestMethod]
         public void TestQuantityFound()
@@ -639,11 +619,11 @@ namespace Testing2
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderID = 21;
+            Int32 OrderID = 2;
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the property
-            if (AnOrder.Quantity != 4)
+            if (AnOrder.Quantity != 2)
             {
                 OK = false;
             }
@@ -661,11 +641,11 @@ namespace Testing2
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderID = 21;
+            Int32 OrderID = 2;
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the property
-            if (AnOrder.TotalPrice != 49.99)
+            if (AnOrder.OrderPrice != 2.5)
             {
                 OK = false;
             }
@@ -683,7 +663,7 @@ namespace Testing2
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderID = 21;
+            Int32 OrderID = 1;
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the property
@@ -705,11 +685,11 @@ namespace Testing2
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderID = 21;
+            Int32 OrderID = 2;
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the property
-            if (AnOrder.OrderDate != Convert.ToDateTime("16/09/2015"))
+            if (AnOrder.OrderDate != Convert.ToDateTime("21/04/2022"))
             {
                 OK = false;
             }
@@ -727,11 +707,11 @@ namespace Testing2
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderID = 21;
+            Int32 OrderID = 2;
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the property
-            if (AnOrder.GamePrice != 49.98)
+            if (AnOrder.GamePrice != 1.25)
             {
                 OK = false;
             }
@@ -749,7 +729,7 @@ namespace Testing2
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderID = 21;
+            Int32 OrderID = 2;
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the property
@@ -771,11 +751,11 @@ namespace Testing2
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderID = 21;
+            Int32 OrderID = 2;
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the property
-            if (AnOrder.CustomerID != 4998)
+            if (AnOrder.CustomerID != 2)
             {
                 OK = false;
             }
@@ -793,7 +773,7 @@ namespace Testing2
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderID = 21;
+            Int32 OrderID = 2;
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the property

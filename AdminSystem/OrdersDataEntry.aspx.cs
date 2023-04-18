@@ -16,7 +16,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsOrder AnOrder = new clsOrder();
-        string OrderDate = txtOrderDate.Text;
+        string DateAdded = txtOrderDate.Text;
         string Quantity = txtGameQuantity.Text;
         string GamePrice = txtGamePrice.Text;
         string OrderPrice = txtOrderPrice.Text;
@@ -25,15 +25,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string CustomerID = txtCustomerID.Text;
         string GameName = txtGameName.Text;
         string Error = "";
-        Error = AnOrder.Valid(OrderDate, GameName, Quantity, GamePrice, OrderPrice, TotalPayable, OrderID, CustomerID);
+        Error = AnOrder.Valid(DateAdded, Quantity, GamePrice,  OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
         if (Error == "")
         {
-            AnOrder.OrderDate = Convert.ToDateTime(OrderDate);
+            AnOrder.DateAdded = Convert.ToDateTime(DateAdded);
             AnOrder.Quantity = Convert.ToInt32(Quantity);
             AnOrder.GamePrice = Convert.ToDouble(GamePrice);
             AnOrder.OrderPrice = Convert.ToDouble(OrderPrice);
             AnOrder.TotalPayable = Convert.ToDouble(TotalPayable);
-            AnOrder.OrderID = OrderID;
+            AnOrder.OrderID = Convert.ToInt32(OrderID);
             AnOrder.CustomerID = Convert.ToInt32(CustomerID);
             AnOrder.GameName = GameName;
             Response.Write("OrdersViewer.aspx");
@@ -52,8 +52,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Found = AnOrder.Find(OrderID);
         if (Found == true)
         {
-            txtCustomerID.Text = AnOrder.OrderID;
-            txtGameName.Text = AnOrder.GamePrice.ToString();
+            txtCustomerID.Text = AnOrder.OrderID.ToString();
+            txtGameName.Text = AnOrder.GameName.ToString();
             txtGameQuantity.Text = AnOrder.Quantity.ToString();
             txtOrderDate.Text = AnOrder.OrderDate.ToString();
             txtOrderID.Text = AnOrder.OrderID.ToString();
