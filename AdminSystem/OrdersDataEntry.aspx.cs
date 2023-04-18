@@ -28,7 +28,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnOrder.Valid(DateAdded, Quantity, GamePrice,  OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
         if (Error == "")
         {
-            AnOrder.DateAdded = Convert.ToDateTime(DateAdded);
+            AnOrder.OrderDate = Convert.ToDateTime(DateAdded);
             AnOrder.Quantity = Convert.ToInt32(Quantity);
             AnOrder.GamePrice = Convert.ToDouble(GamePrice);
             AnOrder.OrderPrice = Convert.ToDouble(OrderPrice);

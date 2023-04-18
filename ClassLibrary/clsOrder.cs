@@ -8,19 +8,7 @@ namespace ClassLibrary
         {
         }
 
-        private Boolean mActive;
-
-        public Boolean Active
-        {
-            get
-            {
-                return mActive;
-            }
-            set
-            {
-                mActive = value;
-            }
-        }
+        
 
         private Int32 mOrderID;
         public Int32 OrderID
@@ -37,17 +25,7 @@ namespace ClassLibrary
 
         
 
-        private DateTime mDateAdded;
-        public DateTime DateAdded {
-            get
-            {
-                return mDateAdded;
-            }
-            set
-            {
-                mDateAdded = value;
-            }
-        }
+        
 
         public string Valid(string dateAdded, string quantity, string gamePrice, string orderPrice, string totalPayable, string gameName, string orderID, string customerID)
         {
@@ -78,19 +56,23 @@ namespace ClassLibrary
             {
                 Error = Error + "The date was invalid. ";
             }
-            
-                if (quantity.Length != 0)
-                {
-                    if(Convert.ToInt32(quantity) < 1 || Convert.ToInt32(quantity) > 9)
-                    Error += "The quantity must be between 1 and 9 inclusive. ";
-                }
-           else
-            {
-                Error += " The quantity was invalid.";
-            }
             try
             {
-                if (customerID.Length > 8 || customerID.Length < 8)
+                
+                {
+                    if (Convert.ToInt32(quantity) < 1 || Convert.ToInt32(quantity) > 9)
+                        Error += "The quantity must be between 1 and 9 inclusive. ";
+                }
+            }
+            catch
+            {
+                Error += "The quantity was invalid.";
+            }
+           
+            try
+            {
+                Int32 custIDtemp = Convert.ToInt32(customerID);
+                if (customerID.Length != 8)
                 {
                     Error += "Customer ID is not 8 digits.";
                 }
@@ -98,16 +80,19 @@ namespace ClassLibrary
             {
                 Error += " The customer ID is invalid.";
             }
-            if (orderID.Length != 0)
+            try
             {
-                if (Convert.ToInt32(orderID) < 1 || Convert.ToInt32(orderID) > 999999999)
                 {
-                    Error += "Order ID is the wrong length.";
+                    Int32 orderIDTemp = Convert.ToInt32(orderID);
+                    if (orderID.Length < 1 || orderID.Length > 9)
+                    {
+                        Error += "Order ID is the wrong length.";
+                    }
                 }
-            }
-            else
+            } 
+            catch
             {
-                Error += " OrderId invalid.";
+                Error += " Order ID was invalid.";
             }
             try
             {
@@ -120,24 +105,29 @@ namespace ClassLibrary
             {
                 Error += "The total payable doesn't seem right.";
             }
-            
-           
+
+            try
+            {
+                Double orderPriceTemp = Convert.ToDouble(orderPrice);
                 if (orderPrice.Length == 0 || orderPrice.Length > 6)
                 {
                     Error += "It seems like there is a discrepancy in the orderPrice.";
-                }                
-            else
+                }
+            } catch
             {
-               
+                Error += " Order price was formatted incorrectly.";
             }
-           
+
+            try
+            {
+                Double gamePriceTemp = Convert.ToDouble(gamePrice);
                 if (gamePrice.Length == 0 || gamePrice.Length > 5)
                 {
                     Error += "The game price doesn't seem right.";
                 }
-            else 
+            } catch
             {
-                
+                Error += " The game price was formatted incorrectly.";
             }
             return Error;
         }

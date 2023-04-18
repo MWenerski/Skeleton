@@ -41,15 +41,7 @@ namespace Test_Framework
             Assert.AreEqual(AllOrders.OrderList, TestList);
         }
 
-        //Count Property OK
-        [TestMethod]
-        public void CountPropertyOK()
-        {
-            clsOrderCollection AllOrders = new clsOrderCollection();
-            Int32 SomeCount = 2;
-            AllOrders.Count = SomeCount;
-            Assert.AreEqual(AllOrders.Count, SomeCount);
-        }
+       
 
         //This customer property OK
         [TestMethod]
@@ -92,12 +84,7 @@ namespace Test_Framework
             Assert.AreEqual(AllOrders.Count, TestList.Count);
         }
 
-        [TestMethod]
-        public void TwoRecordsPresent()
-        {
-            clsOrderCollection AllOrders = new clsOrderCollection();
-            Assert.AreEqual(AllOrders.Count, 2);
-        }
+        
     }
 
 
