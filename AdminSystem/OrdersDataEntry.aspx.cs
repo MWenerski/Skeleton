@@ -36,7 +36,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnOrder.OrderID = Convert.ToInt32(OrderID);
             AnOrder.CustomerID = Convert.ToInt32(CustomerID);
             AnOrder.GameName = GameName;
-            Response.Write("OrdersViewer.aspx");
+            AnOrder.InStock = chkInStock.Checked;
+            AnOrder.OrderlineId = Convert.ToInt32(OrderID);
+            clsOrderCollection OrdersList = new clsOrderCollection();
+            if (Convert.ToInt32(OrderID) == -1)
+            {
+                OrdersList.ThisOrder = AnOrder;
+                OrdersList.Add();
+            }
+            else
+            {
+                OrdersList.ThisOrder.Find(Convert.ToInt32(OrderID));
+                OrdersList.ThisOrder = AnOrder;
+                OrdersList.Update();
+            }
+            Response.Redirect("OrdersList.aspx");
         } else
         {
             lblError.Text = Error;
