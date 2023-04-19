@@ -13,6 +13,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("OrdersList.aspx");
+    }
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsOrder AnOrder = new clsOrder();
@@ -28,18 +32,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnOrder.Valid(DateAdded, Quantity, GamePrice,  OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
         if (Error == "")
         {
+            AnOrder.OrderID = Convert.ToInt32(OrderID);
             AnOrder.OrderDate = Convert.ToDateTime(DateAdded);
             AnOrder.Quantity = Convert.ToInt32(Quantity);
             AnOrder.GamePrice = Convert.ToDouble(GamePrice);
             AnOrder.OrderPrice = Convert.ToDouble(OrderPrice);
             AnOrder.TotalPayable = Convert.ToDouble(TotalPayable);
-            AnOrder.OrderID = Convert.ToInt32(OrderID);
             AnOrder.CustomerID = Convert.ToInt32(CustomerID);
             AnOrder.GameName = GameName;
             AnOrder.InStock = chkInStock.Checked;
             AnOrder.OrderlineId = Convert.ToInt32(OrderID);
             clsOrderCollection OrdersList = new clsOrderCollection();
-            if (Convert.ToInt32(OrderID) != -1)
+            if (Convert.ToInt32(Session["orderID"]) == -1)
             {
                 OrdersList.ThisOrder = AnOrder;
                 OrdersList.Add();
