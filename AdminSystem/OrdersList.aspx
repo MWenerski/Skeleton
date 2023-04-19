@@ -19,6 +19,14 @@
         <p>
             <asp:Label ID="lblError" runat="server"></asp:Label>
         </p>
+        <p>
+            <asp:Label ID="lblGameName" runat="server" Text="enter game name"></asp:Label>
+            <asp:TextBox ID="txtFilter" runat="server"></asp:TextBox>
+        </p>
+        <p>
+            <asp:Button ID="btnApply" runat="server" OnClick="btnApply_Click" Text="Apply" />
+            <asp:Button ID="btnClear" runat="server" OnClick="btnClear_Click" Text="Clear" />
+        </p>
     </form>
 </body>
 </html>

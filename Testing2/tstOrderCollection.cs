@@ -194,6 +194,42 @@ namespace Test_Framework
             //test to see that the two values are the same
             Assert. AreEqual(AllOrders. ThisOrder, TestItem);
         }
+
+        [TestMethod]
+        public void ReportByGameNameMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            FilteredOrders.ReportByGameName("");
+            Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
+        }
+
+        [TestMethod]
+        public void ReportByGameNameNoneFound()
+        {
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            FilteredOrders.ReportByGameName("this name doesn't exist");
+            Assert.AreEqual(0, FilteredOrders.Count);
+        }
+
+        [TestMethod]
+        public void ReportByGameNameDataFound()
+        {
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            Boolean OK = true;
+            FilteredOrders.ReportByGameName("luigi");
+            if(FilteredOrders.Count == 1)
+            {
+                if (FilteredOrders.OrderList[0].OrderID != 207171217)
+                {
+                    OK = false;
+                }
+            } else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
         
     }
 
