@@ -87,5 +87,12 @@ namespace ClassLibrary
             DB.AddParameter("@orderlineId", mThisOrder.OrderlineId);
             DB.Execute("sproc_tblOrder_tblOrderLine_Update");
         }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@orderID", mThisOrder.OrderID);
+            DB.Execute("sproc_tblOrder_tblOrderLine_Delete");
+        }
     }
 }
