@@ -8,9 +8,10 @@ namespace Testing3
     public class tstStaff
     {
         string hourlyWage = "9";
-        string hoursWorked = "55";
+        string hoursWorked = "45";
         string phoneNumber = "07960382145";
         string name = "Bradley Walsh";
+        string dateStarted = DateTime.Now.Date.ToString();
 
         [TestMethod]
         public void InstanceOk()
@@ -29,9 +30,9 @@ namespace Testing3
             //Create some test data to assign to the property
             Boolean testData = true;
             //assign the data to the property
-            Staff1.availableToWork = testData;
+            Staff1.AvailableToWork = testData;
             //Test to see if the two values are the same
-            Assert.AreEqual(Staff1.availableToWork, testData);
+            Assert.AreEqual(Staff1.AvailableToWork, testData);
         }
 
         [TestMethod]
@@ -42,9 +43,9 @@ namespace Testing3
             //Create some test data to assign to the property
             DateTime testData = DateTime.Now.Date;
             //assign the data to the property
-            Staff1.dateStarted = testData;
+            Staff1.DateStarted = testData;
             //Test to see if the two values are the same
-            Assert.AreEqual(Staff1.dateStarted, testData);
+            Assert.AreEqual(Staff1.DateStarted, testData);
         }
 
         [TestMethod]
@@ -55,9 +56,9 @@ namespace Testing3
             //Create some test data to assign to the property
             String testData = "01975 1234875";
             //assign the data to the property
-            Staff1.phoneNumber = testData;
+            Staff1.PhoneNumber = testData;
             //Test to see if the two values are the same
-            Assert.AreEqual(Staff1.phoneNumber, testData);
+            Assert.AreEqual(Staff1.PhoneNumber, testData);
         }
         
         [TestMethod]
@@ -201,7 +202,7 @@ namespace Testing3
             //Invoke the method
             found = aStaff.Find(staffId);
             //Check the name
-            if (aStaff.name != "Paul Jones")
+            if (aStaff.Name != "Paul Jones")
             {
                 OK = false;
             }
@@ -223,7 +224,7 @@ namespace Testing3
             //Invoke the method
             found = aStaff.Find(staffId);
             //Check available to work
-            if (aStaff.availableToWork != false)
+            if (aStaff.AvailableToWork != false)
             {
                 OK = false;
             }
@@ -245,12 +246,14 @@ namespace Testing3
             //Invoke the method
             found = aStaff.Find(staffId);
             //Check the date started
-            if (aStaff.dateStarted != Convert.ToDateTime("2022-09-01"))
+            if (aStaff.DateStarted != Convert.ToDateTime("2022-09-01"))
             {
                 OK = false;
             }
             //Test to see if the reuslt is correct
+            
             Assert.IsTrue(OK);
+            
         }
 
         [TestMethod]
@@ -258,7 +261,7 @@ namespace Testing3
         {
             clsStaff aStaff = new clsStaff();
             String Error = "";
-            Error = aStaff.Valid(hoursWorked, hourlyWage, phoneNumber, name);
+            Error = aStaff.Valid(hoursWorked, hourlyWage, phoneNumber, name, dateStarted);
             Assert.AreEqual(Error, "");
         }
 
@@ -267,8 +270,8 @@ namespace Testing3
         {
             clsStaff aStaff = new clsStaff();
             String Error = "";
-            string hoursWorked = "";
-            Error = aStaff.Valid(hoursWorked, hourlyWage, phoneNumber, name);
+            string hoursWorked = "-1";
+            Error = aStaff.Valid(hoursWorked, hourlyWage, phoneNumber, name, dateStarted);
             Assert.AreEqual(Error, "");
         }
         
@@ -278,9 +281,41 @@ namespace Testing3
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hoursWorked = "0";
-            Error = aStaff.Valid(hoursWorked, hourlyWage, phoneNumber, name);
+            Error = aStaff.Valid(hoursWorked, hourlyWage, phoneNumber, name, dateStarted);
             Assert.AreEqual(Error, "");
         }
+
+        [TestMethod]
+        public void HoursWorkedMaxMinusOne()
+        {
+            clsStaff aStaff = new clsStaff();
+            String Error = "";
+            string hoursWorked = "47";
+            Error = aStaff.Valid(hoursWorked, hourlyWage, phoneNumber, name, dateStarted);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void HoursWorkedMax()
+        {
+            clsStaff aStaff = new clsStaff();
+            String Error = "";
+            string hoursWorked = "48";
+            Error = aStaff.Valid(hoursWorked, hourlyWage, phoneNumber, name, dateStarted);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void HoursWorkedMaxPLusOne()
+        {
+            clsStaff aStaff = new clsStaff();
+            String Error = "";
+            string hoursWorked = "49";
+            Error = aStaff.Valid(hoursWorked, hourlyWage, phoneNumber, name, dateStarted);
+            Assert.AreEqual(Error, "");
+        }
+
 
     }
 }

@@ -122,15 +122,41 @@ namespace ClassLibrary
 
         }
         
-        public string Valid(string hoursWorked, string hourlyWage, string phoneNumber, string name)
+        public string Valid(string hoursWorked, string hourlyWage, string phoneNumber, string name, string dateStarted)
         {
             String Error = "";
+
+            double tempDouble;
+            //check to see that the number entered is not blank
             if (hoursWorked.Length == 0)
             {
                 Error = Error + "Hours worked may be blank";
             }
+            try
+            {
+                //check to see if the number entered is positive
+                tempDouble = Convert.ToDouble(hoursWorked);
+                if (tempDouble < 0)
+                {
+                    //record the error
+                    Error = Error + "The number entered can not be a negative number: ";
+                }
+                //check to if the number entered is greater than the max
+                if (tempDouble > 48)
+                {
+                    //record the error
+                    Error = Error + "The number entered can not be greater than 48: ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The value entered is not a valid decimal ";
+            }
+
 
             return Error;
+    
         }
     }
 }
