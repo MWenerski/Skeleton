@@ -12,10 +12,12 @@ public partial class _1_List : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack == false)
-        {
+        {            
             if (orderID != -1)
             {
                 DisplayOrders();
+                clsOrderCollection Orders = new clsOrderCollection();
+
             }
 
         }
@@ -27,7 +29,7 @@ public partial class _1_List : System.Web.UI.Page
         clsOrderCollection Orders = new clsOrderCollection();
         lstOrderList.DataSource = Orders.OrderList;
         lstOrderList.DataValueField = "orderID";
-        lstOrderList.DataTextField = "customerID";
+        lstOrderList.DataTextField = "orderID";
         lstOrderList.DataBind();
     }
 

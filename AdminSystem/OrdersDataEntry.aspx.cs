@@ -39,7 +39,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnOrder.InStock = chkInStock.Checked;
             AnOrder.OrderlineId = Convert.ToInt32(OrderID);
             clsOrderCollection OrdersList = new clsOrderCollection();
-            if (Convert.ToInt32(OrderID) == -1)
+            if (Convert.ToInt32(OrderID) != -1)
             {
                 OrdersList.ThisOrder = AnOrder;
                 OrdersList.Add();
@@ -62,8 +62,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsOrder AnOrder = new clsOrder();
         Int32 OrderID;
         Boolean Found = false;
-        OrderID = Convert.ToInt32(txtOrderID.Text);
-        Found = AnOrder.Find(OrderID);
+        try
+        {
+            OrderID = Convert.ToInt32(txtOrderID.Text);
+            Found = AnOrder.Find(OrderID);
+            lblError.Text = "";
+        } catch
+        {
+            lblError.Text = "Non-numeric value input, so order ID cannot be found.";
+        }
+        
         if (Found == true)
         {
             txtCustomerID.Text = AnOrder.OrderID.ToString();
@@ -73,6 +81,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtOrderID.Text = AnOrder.OrderID.ToString();
             txtOrderPrice.Text = AnOrder.OrderPrice.ToString();
             txtTotalPaid.Text = AnOrder.TotalPayable.ToString();
+            txtGamePrice.Text = AnOrder.GamePrice.ToString();
                 }
     }
 }

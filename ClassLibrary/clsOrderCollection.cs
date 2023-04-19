@@ -37,11 +37,12 @@ namespace ClassLibrary
             Int32 Index = 0;
             Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
-            RecordCount = DB.Count;
+            DB.Execute("sproc_tblOrderLine_SelectAll");
+            RecordCount = (DB.Count );
             while (Index < RecordCount)
             {
                 clsOrder AnOrder = new clsOrder();
-                AnOrder.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["customerID"]);
+               // AnOrder.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["customerID"]);
                 AnOrder.GameName = Convert.ToString(DB.DataTable.Rows[Index]["game"]);
                 AnOrder.GamePrice = Convert.ToDouble(DB.DataTable.Rows[Index]["gamePrice"]);
                 AnOrder.InStock = Convert.ToBoolean(DB.DataTable.Rows[Index]["inStock"]);
@@ -49,8 +50,7 @@ namespace ClassLibrary
                 AnOrder.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["orderID"]);
                 AnOrder.OrderPrice = Convert.ToInt32(DB.DataTable.Rows[Index]["orderPrice"]);
                 AnOrder.Quantity = Convert.ToInt32(DB.DataTable.Rows[Index]["quantity"]);
-                AnOrder.TotalPayable = Convert.ToDouble(DB.DataTable.Rows[Index]["totalPaid"]);
-                mOrderList.Add(AnOrder);
+                //AnOrder.TotalPayable = Convert.ToDouble(DB.DataTable.Rows[Index]["totalPaid"]);
                 mOrderList.Add(AnOrder);
                 Index++;
             }
@@ -92,7 +92,7 @@ namespace ClassLibrary
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@orderID", mThisOrder.OrderID);
-            DB.Execute("sproc_tblOrder_tblOrderLine_Delete");
+            DB.Execute("sproc_tblOrderLine_Delete");
         }
     }
 }
