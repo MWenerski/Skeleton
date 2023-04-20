@@ -663,6 +663,7 @@ namespace Testing2
             Assert.AreNotEqual(Error, "");
         }
 
+        //BEGINNING OF DB TESTS
         [TestMethod]
         public void CheckDataBase()
         {
