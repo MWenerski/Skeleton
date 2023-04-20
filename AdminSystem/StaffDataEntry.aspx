@@ -12,7 +12,7 @@
             <asp:TextBox ID="txtStaffPhoneNumber" runat="server" style="z-index: 1; left: 146px; top: 104px; position: absolute">Enter text here</asp:TextBox>
             <asp:TextBox ID="txtStaffName" runat="server" style="z-index: 1; left: 146px; top: 65px; position: absolute">Enter text here</asp:TextBox>
             <asp:Label ID="lblHoursWorked" runat="server" style="z-index: 1; left: 9px; top: 144px; position: absolute; height: 19px; width: 121px; right: 1450px;" Text="Hours Worked"></asp:Label>
-            <asp:TextBox ID="txtHoursWorked" runat="server" OnTextChanged="TextBox1_TextChanged" style="z-index: 1; top: 138px; position: absolute; left: 147px">Enter text here</asp:TextBox>
+            <asp:TextBox ID="txtHoursWorked" runat="server" style="z-index: 1; top: 138px; position: absolute; left: 147px">Enter text here</asp:TextBox>
             <asp:Label ID="lblHourlyWage" runat="server" style="z-index: 1; left: 13px; top: 177px; position: absolute" Text="Hourly Wage" width="121px"></asp:Label>
             <asp:TextBox ID="txtHourlyWage" runat="server" style="z-index: 1; left: 148px; top: 177px; position: absolute">Enter text here</asp:TextBox>
             <asp:CheckBox ID="chckAvailableToWork" runat="server" Checked="True" style="z-index: 1; left: 16px; top: 208px; position: absolute" Text="Available To work?" width="121px" />
