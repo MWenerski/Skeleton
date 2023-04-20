@@ -99,15 +99,15 @@ namespace ClassLibrary
             //connection string
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@CustomerID", CustomerID);
-            DB.Execute("sproc_tblCustomer_SelectAll");
+            DB.Execute("sproc_tblCustomer_FilterByCustomerID");
             if (DB.Count == 1)
             {
-                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[6]["CustomerID"]);
-                mUsername = Convert.ToString(DB.DataTable.Rows[6]["Username"]);
-                mPassword = Convert.ToString(DB.DataTable.Rows[6]["Password"]);
-                mEmail = Convert.ToString(DB.DataTable.Rows[6]["Email"]);
-                mVerified = Convert.ToBoolean(DB.DataTable.Rows[6]["Verified"]);
-                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[6]["DateCreated"]);
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[17]["CustomerID"]);
+                mUsername = Convert.ToString(DB.DataTable.Rows[17]["Username"]);
+                mPassword = Convert.ToString(DB.DataTable.Rows[17]["Password"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[17]["Email"]);
+                mVerified = Convert.ToBoolean(DB.DataTable.Rows[17]["Verified"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[17]["DateCreated"]);
                 return true;
             }
             else 
@@ -136,18 +136,18 @@ namespace ClassLibrary
             {
                 error = error + "The username may not be blank : ";
             }
-            if (Username.Length > 10) 
+            if (username.Length > 10) 
             {
                 error = error + "The username must be less than 10 characters : ";
             }
             try
             {
                 DateTemp = Convert.ToDateTime(dateAdded);
-                if (DateTemp < DateTime.Now.Date)
+                if (DateTemp < DateTime.Today.Date)
                 {
                     error = error + "The date cannot be in the past : ";
                 }
-                if (DateTemp > DateTime.Now.Date)
+                if (DateTemp > DateTime.Today.Date)
                 {
                     error = error + "The date cannot be in the future : ";
                 }
@@ -168,7 +168,7 @@ namespace ClassLibrary
             {
                 error = error + "The username may not be blank : ";
             }
-            if (Username.Length > 20)
+            if (username.Length > 20)
             {
                 error = error + "The username must be less than 20 characters : ";
             }
