@@ -13,6 +13,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("OrdersList.aspx");
+    }
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsOrder AnOrder = new clsOrder();
@@ -28,18 +32,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnOrder.Valid(DateAdded, Quantity, GamePrice,  OrderPrice, TotalPayable, GameName, OrderID, CustomerID);
         if (Error == "")
         {
+            AnOrder.OrderID = Convert.ToInt32(OrderID);
             AnOrder.OrderDate = Convert.ToDateTime(DateAdded);
             AnOrder.Quantity = Convert.ToInt32(Quantity);
             AnOrder.GamePrice = Convert.ToDouble(GamePrice);
             AnOrder.OrderPrice = Convert.ToDouble(OrderPrice);
             AnOrder.TotalPayable = Convert.ToDouble(TotalPayable);
-            AnOrder.OrderID = Convert.ToInt32(OrderID);
             AnOrder.CustomerID = Convert.ToInt32(CustomerID);
             AnOrder.GameName = GameName;
             AnOrder.InStock = chkInStock.Checked;
             AnOrder.OrderlineId = Convert.ToInt32(OrderID);
             clsOrderCollection OrdersList = new clsOrderCollection();
-            if (Convert.ToInt32(OrderID) == -1)
+            if (Convert.ToInt32(Session["orderID"]) == -1)
             {
                 OrdersList.ThisOrder = AnOrder;
                 OrdersList.Add();
@@ -62,8 +66,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsOrder AnOrder = new clsOrder();
         Int32 OrderID;
         Boolean Found = false;
-        OrderID = Convert.ToInt32(txtOrderID.Text);
-        Found = AnOrder.Find(OrderID);
+        try
+        {
+            OrderID = Convert.ToInt32(txtOrderID.Text);
+            Found = AnOrder.Find(OrderID);
+            lblError.Text = "";
+        } catch
+        {
+            lblError.Text = "Non-numeric value input, so order ID cannot be found.";
+        }
+        
         if (Found == true)
         {
             txtCustomerID.Text = AnOrder.OrderID.ToString();
@@ -73,6 +85,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtOrderID.Text = AnOrder.OrderID.ToString();
             txtOrderPrice.Text = AnOrder.OrderPrice.ToString();
             txtTotalPaid.Text = AnOrder.TotalPayable.ToString();
+            txtGamePrice.Text = AnOrder.GamePrice.ToString();
                 }
     }
 }

@@ -12,10 +12,12 @@ public partial class _1_List : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack == false)
-        {
+        {            
             if (orderID != -1)
             {
                 DisplayOrders();
+                clsOrderCollection Orders = new clsOrderCollection();
+
             }
 
         }
@@ -27,7 +29,7 @@ public partial class _1_List : System.Web.UI.Page
         clsOrderCollection Orders = new clsOrderCollection();
         lstOrderList.DataSource = Orders.OrderList;
         lstOrderList.DataValueField = "orderID";
-        lstOrderList.DataTextField = "customerID";
+        lstOrderList.DataTextField = "orderID";
         lstOrderList.DataBind();
     }
 
@@ -49,5 +51,39 @@ public partial class _1_List : System.Web.UI.Page
         {
             lblError.Text = "Please select a record from the list to edit.";
         }
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        Int32 orderID;
+        if (lstOrderList.SelectedIndex != -1){
+            orderID = Convert.ToInt32(lstOrderList.SelectedValue);
+            Session["orderID"] = orderID;
+            Response.Redirect("OrdersConfirmDelete.aspx");
+        } else
+        {
+            lblError.Text = "Please select a record to delete from the list.";
+        }
+    }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        clsOrderCollection Orders = new clsOrderCollection();
+        Orders.ReportByGameName(txtFilter.Text);
+        lstOrderList.DataSource = Orders.OrderList;
+        lstOrderList.DataValueField = "orderID";
+        lstOrderList.DataTextField = "GameName";
+        lstOrderList.DataBind();
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        clsOrderCollection Orders = new clsOrderCollection();
+        Orders.ReportByGameName("");
+        txtFilter.Text = "";
+        lstOrderList.DataSource = Orders.OrderList;
+        lstOrderList.DataValueField = "orderID";
+        lstOrderList.DataTextField = "GameName";
+        lstOrderList.DataBind();
     }
 }
