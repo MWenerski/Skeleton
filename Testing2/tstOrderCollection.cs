@@ -93,7 +93,7 @@ namespace Test_Framework
             clsOrder TestItem = new clsOrder();
             //var to store the primary key
             Random rnd = new Random();
-            Int32 PrimaryKey = rnd.Next();
+            Int32 PrimaryKey = rnd.Next(1, 999999999);
             //set its properties
             TestItem.CustomerID = 28478192;
             TestItem.GameName = "test";
@@ -127,7 +127,7 @@ namespace Test_Framework
             clsOrder TestItem = new clsOrder();
             //var to store the primary key
             Random rnd = new Random();
-            Int32 PrimaryKey = rnd.Next();
+            Int32 PrimaryKey = rnd.Next(1,999999999);
             //set its properties
             TestItem.CustomerID = 28478192;
             TestItem.GameName = "test";
@@ -161,7 +161,7 @@ namespace Test_Framework
             clsOrder TestItem = new clsOrder();
             //var to store the primary key
             Random rnd = new Random();
-            Int32 PrimaryKey = rnd.Next();
+            Int32 PrimaryKey = rnd.Next(1,999999999);
             //set its properties
             TestItem.CustomerID = 28538192;
             TestItem.GameName = "test";
