@@ -63,7 +63,7 @@ namespace ClassLibrary
             }
         }
 
-
+        //add method
         public int Add()
         {
             //throw new NotImplementedException();
@@ -76,6 +76,20 @@ namespace ClassLibrary
             DB.AddParameter("@Verified", mThisCustomer.Verified);
             DB.AddParameter("@DateAdded", mThisCustomer.DateAdded);
             return DB.Execute("sproc_tblCustomer_Insert");
+        }
+
+        //update method
+        public void Update() 
+        {
+            clsDataConnection DB = new clsDataConnection();
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerID", mThisCustomer.CustomerID);
+            DB.AddParameter("@Username", mThisCustomer.Username);
+            DB.AddParameter("@Password", mThisCustomer.Password);
+            DB.AddParameter("@Email", mThisCustomer.Email);
+            DB.AddParameter("@Verified", mThisCustomer.Verified);
+            DB.AddParameter("@DateAdded", mThisCustomer.DateAdded);
+            return DB.Execute("sproc_tblCustomer_Update");
         }
     }
 }
