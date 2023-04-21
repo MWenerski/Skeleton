@@ -87,6 +87,9 @@ namespace ClassLibrary
                     if (orderID.Length < 1 || orderID.Length > 9)
                     {
                         Error += "Order ID is the wrong length.";
+                    } else if (orderIDTemp < 0)
+                    {
+                        Error += " Order ID is less than zero.";
                     }
                 }
             } 
