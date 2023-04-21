@@ -91,5 +91,12 @@ namespace ClassLibrary
             DB.AddParameter("@DateAdded", mThisCustomer.DateAdded);
             return DB.Execute("sproc_tblCustomer_Update");
         }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerID", mThisCustomer.CustomerID);
+            DB.Execute("sproc_tblCustomer_Delete");
+        }
     }
 }
