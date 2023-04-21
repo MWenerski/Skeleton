@@ -13,7 +13,7 @@ namespace Testing1
         string Username = "Gamer24";
         string Password = "password";
         string Email = "Gamer24@gmail.com";
-        string DateAdded = DateTime.Now.ToString();
+        string DateAdded = DateTime.Today.ToString();
 
         // Added 22/02/2023
 
@@ -131,7 +131,7 @@ namespace Testing1
         {
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
-            Int32 CustomerID = 17;
+            Int32 CustomerID = 11;
             Found = AnCustomer.Find(CustomerID);
             Assert.IsTrue(Found);
         }
@@ -291,7 +291,7 @@ namespace Testing1
             String error = "";
             string Username = "aaaaaaaaaaa";
             error = AnCustomer.Valid(Username, Password, Email, DateAdded);
-            Assert.AreEqual(error, "");
+            Assert.AreNotEqual(error, "");     //should fail
         }
 
         [TestMethod]
@@ -312,7 +312,7 @@ namespace Testing1
             string Username = "";
             Username = Username.PadRight(500, 'a'); //should fail
             error = AnCustomer.Valid(Username, Password, Email, DateAdded);
-            Assert.AreEqual(error, "");
+            Assert.AreNotEqual(error, "");     //should fail
         }
 
         //test DateAdded ----------------------------------------------------------
@@ -322,11 +322,11 @@ namespace Testing1
             clsCustomer AnCustomer = new clsCustomer();
             String error = "";
             DateTime TestDate;
-            TestDate = DateTime.Now.Date;
+            TestDate = DateTime.Today.Date;
             TestDate = TestDate.AddYears(-100);
             string DateAdded = TestDate.ToShortDateString();
             error = AnCustomer.Valid(Username, Password, Email, DateAdded);
-            Assert.AreEqual(error, "");
+            Assert.AreNotEqual(error, "");         //should fail
         }
 
         [TestMethod]
@@ -335,11 +335,11 @@ namespace Testing1
             clsCustomer AnCustomer = new clsCustomer();
             String error = "";
             DateTime TestDate;
-            TestDate = DateTime.Now.Date;
+            TestDate = DateTime.Today.Date;
             TestDate = TestDate.AddDays(-1);
             string DateAdded = TestDate.ToString();
             error = AnCustomer.Valid(Username, Password, Email, DateAdded);
-            Assert.AreEqual(error, "");
+            Assert.AreNotEqual(error, "");      //should fail
         }
 
         [TestMethod]
@@ -348,7 +348,7 @@ namespace Testing1
             clsCustomer AnCustomer = new clsCustomer();
             String error = "";
             DateTime TestDate;
-            TestDate = DateTime.Now.Date;
+            TestDate = DateTime.Today.Date;
             //TestDate = TestDate.AddYears(-100);
             string DateAdded = TestDate.ToString();
             error = AnCustomer.Valid(Username, Password, Email, DateAdded);
@@ -361,11 +361,11 @@ namespace Testing1
             clsCustomer AnCustomer = new clsCustomer();
             String error = "";
             DateTime TestDate;
-            TestDate = DateTime.Now.Date;
+            TestDate = DateTime.Today.Date;
             TestDate = TestDate.AddDays(1);
             string DateAdded = TestDate.ToString();
             error = AnCustomer.Valid(Username, Password, Email, DateAdded);
-            Assert.AreEqual(error, "");
+            Assert.AreNotEqual(error, "");      //should fail
         }
 
         [TestMethod]
@@ -374,11 +374,11 @@ namespace Testing1
             clsCustomer AnCustomer = new clsCustomer();
             String error = "";
             DateTime TestDate;
-            TestDate = DateTime.Now.Date;
+            TestDate = DateTime.Today.Date;
             TestDate = TestDate.AddYears(100);
             string DateAdded = TestDate.ToString();
             error = AnCustomer.Valid(Username, Password, Email, DateAdded);
-            Assert.AreEqual(error, "");
+            Assert.AreNotEqual(error, "");         //should fail
         }
 
         [TestMethod]
@@ -387,11 +387,11 @@ namespace Testing1
             clsCustomer AnCustomer = new clsCustomer();
             String error = "";
             DateTime TestDate;
-            //TestDate = DateTime.Now.Date;
-            //TestDate = TestDate.AddYears(-100);
+            TestDate = DateTime.Today.Date;
+            TestDate = TestDate.AddYears(-100);
             string DateAdded = "this is not a date!";
             error = AnCustomer.Valid(Username, Password, Email, DateAdded);
-            Assert.AreEqual(error, "");
+            Assert.AreNotEqual(error, "");      //should fail
         }
 
         //test Password ---------------------------------------------------------------------
@@ -444,7 +444,7 @@ namespace Testing1
             String error = "";
             string Password = "aaaaaaaaaaa";
             error = AnCustomer.Valid(Username, Password, Email, DateAdded);
-            Assert.AreEqual(error, "");
+            Assert.AreNotEqual(error, "");     //shoulf fail
         }
 
         [TestMethod]
@@ -465,7 +465,8 @@ namespace Testing1
             string Password = "";
             Username = Username.PadRight(500, 'a'); //should fail
             error = AnCustomer.Valid(Username, Password, Email, DateAdded);
-            Assert.AreEqual(error, "");
+            Assert.AreNotEqual(error, "");
+            
         }
 
         //test Email --------------------------------------------------------------------
@@ -538,7 +539,10 @@ namespace Testing1
             string Email = "";
             Username = Username.PadRight(500, 'a'); //should fail
             error = AnCustomer.Valid(Username, Password, Email, DateAdded);
-            Assert.AreEqual(error, "");
+            Assert.AreNotEqual(error, "");     //should fail
         }
+
+        
+
     }
 }
