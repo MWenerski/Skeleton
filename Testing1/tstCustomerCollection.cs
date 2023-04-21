@@ -105,6 +105,7 @@ namespace Testing1
             TestItem.Verified = true;
             TestItem.DateAdded = DateTime.Today.Date;
 
+            //Add() should jump to Collection but jomps to clsCustomer
             AllCustomers.ThisCustomer.Add();
             TestItem.CustomerID = PrimaryKey;
             AllCustomers.ThisCustomer.Find(PrimaryKey);
@@ -159,6 +160,51 @@ namespace Testing1
             Assert.IsFalse(Found);
         }
 
+        //field
+
+
+        //Report By Username Method OK, NoneFound and TestDataFound
+        [TestMethod]
+        public void ReportByUsernameMethodOK()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            FilteredCustomers.ReportByUsername("");
+            Assert.AreEqual(AllCustomers.Count, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByUsernameNoneFound()
+        {
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            FilteredCustomers.ReportByUsername("xxx xxx");
+            Assert.AreEqual(0, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByUsernameTestDataFound()
+        {
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            Boolean OK = true;
+            FilteredCustomers.ReportByUsername("yyy yyy");
+            if(FilteredCustomers.Count == 2)
+            {
+                //check first to see if record 36 and 37 exisits
+                if (FilteredCustomers.CustomerList[0].CustomerID != 36)
+                {
+                    OK = false;
+                }
+                if (FilteredCustomers.CustomerList[1].CustomerID != 37)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
     }
 
 
