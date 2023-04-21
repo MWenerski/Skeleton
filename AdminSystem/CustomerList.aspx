@@ -9,7 +9,8 @@
 <body>
     <form id="form1" runat="server">
         <div style="height: 637px">
-            <asp:ListBox ID="lstCustomerList" runat="server" Height="620px" OnSelectedIndexChanged="lstCustomerList_SelectedIndexChanged" Width="547px"></asp:ListBox>
+            <asp:ListBox ID="lstCustomerList" runat="server" Height="604px" OnSelectedIndexChanged="lstCustomerList_SelectedIndexChanged" Width="581px"></asp:ListBox>
+            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
         </div>
     </form>
 </body>
