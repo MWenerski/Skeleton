@@ -110,7 +110,35 @@ namespace Testing1
             AllCustomers.ThisCustomer.Find(PrimaryKey);
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
+
+        //update method
+        [TestMethod]
+        public void UpdateMethodOk() 
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            clsCustomer TestItem = new clsCustomer();
+            Int32 PrimaryKey = 0;
+            TestItem.Verified = true;
+            TestItem.Username = "Tobi";
+            TestItem.Password = "password";
+            TestItem.Email = "Tobi@gmail.com";
+            TestItem.DateAdded = DateTime.Today.Date;
+
+            AllCustomers.ThisCustomer = TestItem;
+            PrimaryKey = AllCustomers.Add();
+            TestItem.Verified = false;
+            TestItem.Username = "Ryan";
+            TestItem.Password = "username";
+            TestItem.Email = "Ryan@gmail.com";
+            TestItem.DateAdded = DateTime.Today.Date;
+
+            AllCustomers.ThisCustomer = TestItem;
+            AllCustomers.Update();
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
+        }
     }
+
 
 
 }
