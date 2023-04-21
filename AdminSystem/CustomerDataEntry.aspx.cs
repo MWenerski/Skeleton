@@ -28,7 +28,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string password = txtPassword.Text;
         string email = txtEmail.Text;
         string dateAdded = txtDateAdded.Text;
-
+        
         //variable to store any error messages
         string error = "";
 
@@ -44,11 +44,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnCustomer.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
             AnCustomer.Verified = chkVerified.Checked;
 
+            //instance of customer collection
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            CustomerList.ThisCustomer = AnCustomer;
+            CustomerList.Add();
+
             //store the username in the session object
-            Session["AnCustomer"] = AnCustomer;
+            //Session["AnCustomer"] = AnCustomer;
 
             //nav to the viewer page
-            Response.Redirect("CustomerViewer.aspx");
+            //Response.Redirect("CustomerViewer.aspx");
+            //redirect back to the listpage
+            Response.Redirect("CustomerList.aspx");
         }
         else 
         {

@@ -541,5 +541,8 @@ namespace Testing1
             error = AnCustomer.Valid(Username, Password, Email, DateAdded);
             Assert.AreNotEqual(error, "");     //should fail
         }
+
+        
+
     }
 }

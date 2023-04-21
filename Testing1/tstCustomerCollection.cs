@@ -91,6 +91,25 @@ namespace Testing1
             clsCustomerCollection AllCustomers = new clsCustomerCollection();
             Assert.AreEqual(AllCustomers.Count, 2);
         }
+
+        //Add method -------------------------------------------------------
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            clsCustomer TestItem = new clsCustomer();
+            Int32 PrimaryKey = 0;
+            TestItem.Username = "Bad";
+            TestItem.Password = "Man";
+            TestItem.Email = "BM@gmail.com";
+            TestItem.Verified = true;
+            TestItem.DateAdded = DateTime.Today.Date;
+
+            AllCustomers.ThisCustomer.Add();
+            TestItem.CustomerID = PrimaryKey;
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
+        }
     }
 
 
