@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ClassLibrary;
 
 namespace ClassLibrary
 {
@@ -12,22 +13,9 @@ namespace ClassLibrary
         //constructor
         public clsCustomerCollection()
         {
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblCustomer_SelectAll");
-            RecordCount = DB.Count;
-            while (Index < RecordCount)
-            {
-                clsCustomer AnCustomer = new clsCustomer();
-                AnCustomer.Verified = Convert.ToBoolean(DB.DataTable.Rows[Index]["Verified"]);
-                AnCustomer.Username = Convert.ToString(DB.DataTable.Rows[Index]["Customer"]);
-                AnCustomer.Password = Convert.ToString(DB.DataTable.Rows[Index]["Password"]);
-                AnCustomer.Email = Convert.ToString(DB.DataTable.Rows[Index]["Email"]);
-                AnCustomer.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAdded"]);
-                mCustomerList.Add(AnCustomer);
-                Index++;
-            }
+            PopulateArray(DB);
         }
         public List<clsCustomer> CustomerList
         {
@@ -82,14 +70,13 @@ namespace ClassLibrary
         public void Update() 
         {
             clsDataConnection DB = new clsDataConnection();
-            clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@CustomerID", mThisCustomer.CustomerID);
             DB.AddParameter("@Username", mThisCustomer.Username);
             DB.AddParameter("@Password", mThisCustomer.Password);
             DB.AddParameter("@Email", mThisCustomer.Email);
             DB.AddParameter("@Verified", mThisCustomer.Verified);
             DB.AddParameter("@DateAdded", mThisCustomer.DateAdded);
-            return DB.Execute("sproc_tblCustomer_Update");
+            DB.Execute("sproc_tblCustomer_Update");
         }
 
         public void Delete()
@@ -97,6 +84,35 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@CustomerID", mThisCustomer.CustomerID);
             DB.Execute("sproc_tblCustomer_Delete");
+        }
+
+        public void ReportByUsername(string Username)
+        {
+            //filters the records based on a full or partial post code
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Username", Username);
+            DB.Execute("sproc_tblCustomer_FilterByUsername");
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the parameter DB
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mCustomerList = new List<clsCustomer>();
+            while (Index < RecordCount)
+            {
+                clsCustomer AnCustomer = new clsCustomer();
+                AnCustomer.Verified = Convert.ToBoolean(DB.DataTable.Rows[Index]["Verified"]);
+                AnCustomer.Username = Convert.ToString(DB.DataTable.Rows[Index]["Username"]);
+                AnCustomer.Password = Convert.ToString(DB.DataTable.Rows[Index]["Password"]);
+                AnCustomer.Email = Convert.ToString(DB.DataTable.Rows[Index]["Email"]);
+                AnCustomer.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAdded"]);
+                mCustomerList.Add(AnCustomer);
+                Index++;
+            }
         }
     }
 }
