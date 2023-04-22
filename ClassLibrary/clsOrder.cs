@@ -135,6 +135,80 @@ namespace ClassLibrary
             return Error;
         }
 
+        public string Valid(string dateAdded, string totalPayable, string orderID, string customerID, string gameName)
+        {
+            String Error = "";
+            DateTime DateTemp;
+            try
+            {
+
+                DateTemp = Convert.ToDateTime(dateAdded);
+                if (DateTemp < DateTime.Today.Date)
+                {
+                    Error = Error + "The date cannot be in the past. ";
+                }
+                if (DateTemp > DateTime.Today.Date)
+                {
+                    Error = Error + "The date cannot be in the future. ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was invalid. ";
+            }
+            try
+            {
+                Int32 custIDtemp = Convert.ToInt32(customerID);
+                if (customerID.Length != 8)
+                {
+                    Error += "Customer ID is not 8 digits.";
+                }
+            }
+            catch
+            {
+                Error += " The customer ID is invalid.";
+            }
+            try
+            {
+                {
+                    Int32 orderIDTemp = Convert.ToInt32(orderID);
+                    if (orderID.Length < 1 || orderID.Length > 9)
+                    {
+                        Error += "Order ID is the wrong length.";
+                    }
+                    else if (orderIDTemp < 0)
+                    {
+                        Error += " Order ID is less than zero.";
+                    }
+                }
+            }
+            catch
+            {
+                Error += " Order ID was invalid.";
+            }
+            try
+            {
+                Double PayableTemp = Convert.ToDouble(totalPayable);
+                if (PayableTemp == 0 || PayableTemp > 10000)
+                {
+                    Error += "The total payable doesn't seem right.";
+                }
+            }
+            catch
+            {
+                Error += "The total payable doesn't seem right.";
+            }
+            if (gameName.Length == 0)
+            {
+                Error = Error + "The game name cannot be blank. ";
+            }
+            if (gameName.Length > 50)
+            {
+                Error = Error + "The game length is too long. ";
+            }
+            return Error;
+        }
+
         public bool CheckDataBase()
         {
             clsDataConnection DB = new clsDataConnection();
@@ -251,15 +325,10 @@ namespace ClassLibrary
             if(DB.Count == 1)
             {
                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["customerID"]);
-               mGameName = Convert.ToString(DB.DataTable.Rows[0]["game"]);
-                mGamePrice = Convert.ToDouble(DB.DataTable.Rows[0]["gamePrice"]);
-                mInStock = Convert.ToBoolean(DB.DataTable.Rows[0]["inStock"]);
                 mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["orderDate"]);
                 mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["orderID"]);
-                mOrderPrice = Convert.ToDouble(DB.DataTable.Rows[0]["orderPrice"]);
-                mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["quantity"]);
                 mTotalPayable = Convert.ToDouble(DB.DataTable.Rows[0]["totalPaid"]);
-                mOrderlineId = Convert.ToInt32(DB.DataTable.Rows[0]["orderlineId"]);
+                mGameName = Convert.ToString(DB.DataTable.Rows[0]["gameName"]);
                 
                 return true;
             } else

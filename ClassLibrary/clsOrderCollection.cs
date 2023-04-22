@@ -42,7 +42,7 @@ namespace ClassLibrary
         public clsOrderCollection()
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.Execute("sproc_tblOrderLine_SelectAll");
+            DB.Execute("sproc_tblOrder_SelectAll");
             PopulateArray(DB);
             
             
@@ -56,13 +56,8 @@ namespace ClassLibrary
             DB.AddParameter("@orderID", mThisOrder.OrderID);
             DB.AddParameter("@orderDate", mThisOrder.OrderDate);
             DB.AddParameter("@totalPaid", mThisOrder.TotalPayable);
-            DB.AddParameter("@quantity", mThisOrder.Quantity);
-            DB.AddParameter("@orderPrice", mThisOrder.OrderPrice);
-            DB.AddParameter("@gamePrice", mThisOrder.GamePrice);
-            DB.AddParameter("@game", mThisOrder.GameName);
-            DB.AddParameter("@inStock", mThisOrder.InStock);
-            DB.AddParameter("@orderlineId", mThisOrder.OrderlineId);
-            return DB.Execute("sproc_tblOrder_tblOrderLine_Insert");
+            DB.AddParameter("@gameName", mThisOrder.GameName);
+            return DB.Execute("sproc_tblOrder_Insert");
         }
 
         public void Update()
@@ -72,27 +67,22 @@ namespace ClassLibrary
             DB.AddParameter("@orderID", mThisOrder.OrderID);
             DB.AddParameter("@orderDate", mThisOrder.OrderDate);
             DB.AddParameter("@totalPaid", mThisOrder.TotalPayable);
-            DB.AddParameter("@quantity", mThisOrder.Quantity);
-            DB.AddParameter("@orderPrice", mThisOrder.OrderPrice);
-            DB.AddParameter("@gamePrice", mThisOrder.GamePrice);
-            DB.AddParameter("@game", mThisOrder.GameName);
-            DB.AddParameter("@inStock", mThisOrder.InStock);
-            DB.AddParameter("@orderlineId", mThisOrder.OrderlineId);
-            DB.Execute("sproc_tblOrder_tblOrderLine_Update");
+            DB.AddParameter("@gameName", mThisOrder.GameName);
+            DB.Execute("sproc_tblOrder_Update");
         }
 
         public void Delete()
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@orderID", mThisOrder.OrderID);
-            DB.Execute("sproc_tblOrderLine_Delete");
+            DB.Execute("sproc_tblOrder_Delete");
         }
 
         public void ReportByGameName(string GameName)
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@game", GameName);
-            DB.Execute("sproc_tblOrderLine_FilterByGameName");
+            DB.AddParameter("@gameName", GameName);
+            DB.Execute("sproc_tblOrder_FilterByGameName");
             PopulateArray(DB);
         }
 
@@ -105,15 +95,11 @@ namespace ClassLibrary
             while (Index < RecordCount)
             {
                 clsOrder AnOrder = new clsOrder();
-                // AnOrder.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["customerID"]);
-                AnOrder.GameName = Convert.ToString(DB.DataTable.Rows[Index]["game"]);
-                AnOrder.GamePrice = Convert.ToDouble(DB.DataTable.Rows[Index]["gamePrice"]);
-                AnOrder.InStock = Convert.ToBoolean(DB.DataTable.Rows[Index]["inStock"]);
-                AnOrder.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["orderDate"]); ;
+                AnOrder.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["customerID"]);
+                AnOrder.GameName = Convert.ToString(DB.DataTable.Rows[Index]["gameName"]); 
+                AnOrder.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["orderDate"]); 
                 AnOrder.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["orderID"]);
-                AnOrder.OrderPrice = Convert.ToInt32(DB.DataTable.Rows[Index]["orderPrice"]);
-                AnOrder.Quantity = Convert.ToInt32(DB.DataTable.Rows[Index]["quantity"]);
-                //AnOrder.TotalPayable = Convert.ToDouble(DB.DataTable.Rows[Index]["totalPaid"]);
+                AnOrder.TotalPayable = Convert.ToDouble(DB.DataTable.Rows[Index]["totalPaid"]);
                 mOrderList.Add(AnOrder);
                 Index++;
             }
