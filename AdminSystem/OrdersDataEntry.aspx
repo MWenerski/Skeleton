@@ -25,20 +25,9 @@
             <asp:TextBox ID="txtTotalPaid" runat="server"></asp:TextBox>
         </p>
         <p>
-            <asp:Label ID="Label7" runat="server" Text="Game Quantity"></asp:Label>
-            <asp:TextBox ID="txtGameQuantity" runat="server"></asp:TextBox>
-        </p>
-        <p>
-            <asp:Label ID="Label8" runat="server" Text="Order Price" width="91px"></asp:Label>
-            <asp:TextBox ID="txtOrderPrice" runat="server"></asp:TextBox>
-        </p>
-        <p>
-            <asp:Label ID="Label9" runat="server" Text="Game Price" width="91px"></asp:Label>
-            <asp:TextBox ID="txtGamePrice" runat="server"></asp:TextBox>
-        </p>
             <asp:Label ID="lblGameName" runat="server" Text="Game Name" width="91px"></asp:Label>
             <asp:TextBox ID="txtGameName" runat="server"></asp:TextBox>
-        <asp:CheckBox ID="chkInStock" runat="server" Text="In Stock?" />
+        </p>
         <p>
             <asp:Label ID="lblError" runat="server"></asp:Label>
         </p>
@@ -48,6 +37,10 @@
             <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click1" />
             <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
         </p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
     </form>
 </body>
 </html>

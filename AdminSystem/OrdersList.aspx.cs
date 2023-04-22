@@ -29,7 +29,7 @@ public partial class _1_List : System.Web.UI.Page
         clsOrderCollection Orders = new clsOrderCollection();
         lstOrderList.DataSource = Orders.OrderList;
         lstOrderList.DataValueField = "orderID";
-        lstOrderList.DataTextField = "orderID";
+        lstOrderList.DataTextField = "gameName";
         lstOrderList.DataBind();
     }
 
@@ -46,6 +46,7 @@ public partial class _1_List : System.Web.UI.Page
         {
             orderID = Convert.ToInt32(lstOrderList.SelectedValue);
             Session["orderID"] = orderID;
+            Session["editTrue"] = true;
             Response.Redirect("OrdersDataEntry.aspx");
         } else
         {
@@ -72,7 +73,7 @@ public partial class _1_List : System.Web.UI.Page
         Orders.ReportByGameName(txtFilter.Text);
         lstOrderList.DataSource = Orders.OrderList;
         lstOrderList.DataValueField = "orderID";
-        lstOrderList.DataTextField = "GameName";
+        lstOrderList.DataTextField = "gameName";
         lstOrderList.DataBind();
     }
 
@@ -83,7 +84,7 @@ public partial class _1_List : System.Web.UI.Page
         txtFilter.Text = "";
         lstOrderList.DataSource = Orders.OrderList;
         lstOrderList.DataValueField = "orderID";
-        lstOrderList.DataTextField = "GameName";
+        lstOrderList.DataTextField = "gameName";
         lstOrderList.DataBind();
     }
 }
