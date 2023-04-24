@@ -66,8 +66,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
     }
 
-    //BTN UPDATE BELOW
-    protected void Button1_Click(object sender, EventArgs e)
+    protected void btnUpdate_Click(object sender, EventArgs e)
     {
         {
             clsOrder AnOrder = new clsOrder();
