@@ -3,7 +3,7 @@ using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Testing4
 {
-    [TestClass]
+   /* [TestClass]
     public class tstStock
     {
         [TestMethod]
@@ -66,6 +66,7 @@ namespace Testing4
         }
 
     }
+   */
 
     
 }

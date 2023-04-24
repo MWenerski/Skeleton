@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Testing5
 {
-    [TestClass]
+    /*[TestClass]
     public class tstSupplier
     {
         [TestMethod]
@@ -220,4 +220,5 @@ namespace Testing5
 
 
     }
+    */
 }

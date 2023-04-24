@@ -8,7 +8,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+       / <div>
         </div>
         <asp:Label ID="lblCustomerID" runat="server" Text="Customer ID" width="91px"></asp:Label>
         <asp:TextBox ID="txtCustomerID" runat="server"></asp:TextBox>
@@ -41,7 +41,7 @@
             <asp:Label ID="lblError" runat="server"></asp:Label>
         </p>
         <p>
-            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
+            
             <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
         </p>
     </form>

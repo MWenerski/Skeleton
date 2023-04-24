@@ -8,7 +8,7 @@ using ClassLibrary;
 
 public partial class _1Viewer : System.Web.UI.Page
 {
-    protected void Page_Load(object sender, EventArgs e)
+  /*  protected void Page_Load(object sender, EventArgs e)
     {
         clsOrder AnOrder = new clsOrder();
         AnOrder = (clsOrder) Session["AnOrder"];
@@ -27,4 +27,5 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write(AnOrder.GamePrice);
         Response.Write("<br />");
     }
+  */
 }

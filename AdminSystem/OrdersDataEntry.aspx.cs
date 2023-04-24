@@ -8,7 +8,7 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
-    protected void Page_Load(object sender, EventArgs e)
+   /* protected void Page_Load(object sender, EventArgs e)
     {
 
     }
@@ -27,4 +27,5 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Response.Redirect("OrdersViewer.aspx");
 
     }
+   */
 }

@@ -2,7 +2,7 @@
 
 namespace ClassLibrary
 {
-    public class clsOrder
+   /* public class clsOrder
     {
         public clsOrder()
         {
@@ -65,4 +65,5 @@ namespace ClassLibrary
             return true;
         }
     }
+   */
 }
