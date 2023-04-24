@@ -27,6 +27,7 @@
         <p>
             <asp:Label ID="lblGameName" runat="server" Text="Game Name" width="91px"></asp:Label>
             <asp:TextBox ID="txtGameName" runat="server"></asp:TextBox>
+            <asp:CheckBox ID="chkInStock" runat="server" Text="In Stock?" />
         </p>
         <p>
             <asp:Label ID="lblError" runat="server"></asp:Label>

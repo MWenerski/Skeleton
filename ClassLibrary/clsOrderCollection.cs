@@ -57,6 +57,7 @@ namespace ClassLibrary
             DB.AddParameter("@orderDate", mThisOrder.OrderDate);
             DB.AddParameter("@totalPaid", mThisOrder.TotalPayable);
             DB.AddParameter("@gameName", mThisOrder.GameName);
+            DB.AddParameter("@inStock", mThisOrder.InStock);
             return DB.Execute("sproc_tblOrder_Insert");
         }
 
@@ -68,6 +69,7 @@ namespace ClassLibrary
             DB.AddParameter("@orderDate", mThisOrder.OrderDate);
             DB.AddParameter("@totalPaid", mThisOrder.TotalPayable);
             DB.AddParameter("@gameName", mThisOrder.GameName);
+            DB.AddParameter("@inStock", mThisOrder.InStock);
             DB.Execute("sproc_tblOrder_Update");
         }
 
@@ -100,6 +102,7 @@ namespace ClassLibrary
                 AnOrder.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["orderDate"]); 
                 AnOrder.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["orderID"]);
                 AnOrder.TotalPayable = Convert.ToDouble(DB.DataTable.Rows[Index]["totalPaid"]);
+                AnOrder.InStock = Convert.ToBoolean(DB.DataTable.Rows[Index]["inStock"]);
                 mOrderList.Add(AnOrder);
                 Index++;
             }

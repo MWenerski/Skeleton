@@ -24,6 +24,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtOrderDate.Text = "";
         txtOrderID.Text = "";
         txtTotalPaid.Text = "";
+        chkInStock.Checked = false;
         lblError.Text = "";
     }
 
@@ -45,6 +46,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 AnOrder.GameName = GameName;
             AnOrder.TotalPayable = Convert.ToDouble(TotalPayable);
             AnOrder.CustomerID = Convert.ToInt32(CustomerID);
+                AnOrder.InStock = Convert.ToBoolean(chkInStock.Checked);
             
             clsOrderCollection OrdersList = new clsOrderCollection();
             {
@@ -85,6 +87,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
                     AnOrder.GameName = GameName;
                     AnOrder.TotalPayable = Convert.ToDouble(TotalPayable);
                     AnOrder.CustomerID = Convert.ToInt32(CustomerID);
+                    AnOrder.InStock = Convert.ToBoolean(chkInStock.Checked);
 
                     clsOrderCollection OrdersList = new clsOrderCollection();
                     if (OrdersList.ThisOrder.Find(Convert.ToInt32(OrderID)))
@@ -129,6 +132,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtOrderID.Text = AnOrder.OrderID.ToString();
             txtTotalPaid.Text = AnOrder.TotalPayable.ToString();
             txtGameName.Text = AnOrder.GameName;
+            chkInStock.Checked = AnOrder.InStock;
         }
         else
         {
@@ -137,6 +141,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtOrderID.Text = "";
             txtTotalPaid.Text = "";
             txtGameName.Text = "";
+            chkInStock.Checked = false;
             lblError.Text = "The OrderID wasn't found in tblOrder.";
         }
     }

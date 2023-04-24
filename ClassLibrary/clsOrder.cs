@@ -26,7 +26,7 @@ namespace ClassLibrary
         
 
         
-
+        //this valid method is ONLY used for testing
         public string Valid(string dateAdded, string quantity, string gamePrice, string orderPrice, string totalPayable, string gameName, string orderID, string customerID)
         {
             String Error = "";
@@ -135,6 +135,7 @@ namespace ClassLibrary
             return Error;
         }
 
+        //this vali method is used for the web application
         public string Valid(string dateAdded, string totalPayable, string orderID, string customerID, string gameName)
         {
             String Error = "";
@@ -329,7 +330,7 @@ namespace ClassLibrary
                 mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["orderID"]);
                 mTotalPayable = Convert.ToDouble(DB.DataTable.Rows[0]["totalPaid"]);
                 mGameName = Convert.ToString(DB.DataTable.Rows[0]["gameName"]);
-                
+                mInStock = Convert.ToBoolean(DB.DataTable.Rows[0]["inStock"]);
                 return true;
             } else
             {
