@@ -7,6 +7,16 @@ namespace Testing5
     [TestClass]
     public class tstSupplier
     {
+
+        //good test data
+        //create some test data to pass to the method
+        String SupplierName = "name";
+        String Email = "email";
+        String DateAdded = DateTime.Now.Date.ToString();
+        String ContactNumber = "ContactNumber";
+        String Address = "Address";
+
+
         [TestMethod]
         public void InstanceOk()
         {
@@ -79,7 +89,7 @@ namespace Testing5
         public void FindMethodOk()
         {
             clsSupplier InSupplier = new clsSupplier();
-            bool Found = false;
+            Boolean Found = false;
             int ID = 2;
             Found = InSupplier.Find(ID);
             Assert.IsTrue(Found);
@@ -89,9 +99,9 @@ namespace Testing5
         {
             clsSupplier InSupplier = new clsSupplier();
             //boolean variable to store the result of the research
-            bool Found = false;
+            Boolean Found = false;
             //boolean variable to record if data is OK
-            bool OK = true;
+            Boolean OK = true;
             int ID = 2;
             Found = InSupplier.Find(ID);
             //Check the ID
@@ -107,14 +117,14 @@ namespace Testing5
         {
             clsSupplier InSupplier = new clsSupplier();
             //boolean variable to store the result of the research
-            bool Found = false;
+            Boolean Found = false;
             //boolean variable to record if data is OK
-            bool OK = true;
+            Boolean OK = true;
             //creqte some test data to use with the method
             int ID = 2;
             Found = InSupplier.Find(ID);
             //Check the ID
-            if (InSupplier.SupplierName != "name")
+            if (InSupplier.SupplierName != "Asma")
             {
                 OK = false;
             }
@@ -126,14 +136,14 @@ namespace Testing5
         {
             clsSupplier InSupplier = new clsSupplier();
             //boolean variable to store the result of the research
-            bool Found = false;
+            Boolean Found = false;
             //boolean variable to record if data is OK
-            bool OK = true;
+            Boolean OK = true;
             //creqte some test data to use with the method
             int ID = 2;
             Found = InSupplier.Find(ID);
             //Check the ID
-            if (InSupplier.Email != "email")
+            if (InSupplier.Email != "asma@")
             {
                 OK = false;
             }
@@ -145,14 +155,14 @@ namespace Testing5
         {
             clsSupplier InSupplier = new clsSupplier();
             //boolean variable to store the result of the research
-            bool Found = false;
+            Boolean Found = false;
             //boolean variable to record if data is OK
-            bool OK = true;
+            Boolean OK = true;
             //creqte some test data to use with the method
             int ID = 2;
             Found = InSupplier.Find(ID);
             //Check the ID
-            if (InSupplier.DateAdded != Convert.ToDateTime("22/03/2023"))
+            if (InSupplier.DateAdded != Convert.ToDateTime("14/09/2020"))
             {
                 OK = false;
             }
@@ -164,14 +174,14 @@ namespace Testing5
         {
             clsSupplier InSupplier = new clsSupplier();
             //boolean variable to store the result of the research
-            bool Found = false;
+            Boolean Found = false;
             //boolean variable to record if data is OK
-            bool OK = true;
+            Boolean OK = true;
             //creqte some test data to use with the method
             int ID = 2;
             Found = InSupplier.Find(ID);
             //Check the ID
-            if (InSupplier.ContactNumber != "ContactNumber")
+            if (InSupplier.ContactNumber != "JGG98")
             {
                 OK = false;
             }
@@ -183,14 +193,14 @@ namespace Testing5
         {
             clsSupplier InSupplier = new clsSupplier();
             //boolean variable to store the result of the research
-            bool Found = false;
+            Boolean Found = false;
             //boolean variable to record if data is OK
-            bool OK = true;
+            Boolean OK = true;
             //creqte some test data to use with the method
             int ID = 2;
             Found = InSupplier.Find(ID);
             //Check the ID
-            if (InSupplier.Address != "Address")
+            if (InSupplier.Address != "Tangier")
             {
                 OK = false;
             }
@@ -202,9 +212,9 @@ namespace Testing5
         {
             clsSupplier InSupplier = new clsSupplier();
             //boolean variable to store the result of the research
-            bool Found = false;
+            Boolean Found = false;
             //boolean variable to record if data is OK
-            bool OK = true;
+            Boolean OK = true;
             //creqte some test data to use with the method
             int ID = 2;
             Found = InSupplier.Find(ID);
@@ -216,7 +226,14 @@ namespace Testing5
             //test to see that the result is correct
             Assert.IsTrue(OK);
         }
-
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsSupplier InSupplier = new clsSupplier();
+            String Error = "";
+            Error = InSupplier.Valid(SupplierName, Email, DateAdded, ContactNumber, Address);
+            Assert.AreEqual(Error, "");
+        }
 
 
     }
