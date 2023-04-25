@@ -54,16 +54,26 @@ namespace ClassLibrary
 
         public clsStaffCollection()
         {
-            //Var for the index
-            Int32 Index = 0;
-            //Var to store the record count
-            Int32 RecordCount = 0;
+         
             //Object for the data connection
             clsDataConnection DB = new clsDataConnection();
             //Execute the stored procedure
             DB.Execute("sproc_tblStaff_SelectAll");
+            //Populate the array list with the data table
+            PopulateArray(DB);
+           
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+            //Populates the array list based on the data tbale in the parameter DB
+            //Var for the index
+            Int32 Index = 0;
+            //Var to store the record count
+            Int32 RecordCount = 0;
             //Get the count of records
             RecordCount = DB.Count;
+            //Clear the private array list
+            mStaffList = new List<clsStaff>();
             while (Index < RecordCount)
             {
                 //Create a blank address
@@ -81,6 +91,7 @@ namespace ClassLibrary
                 Index++;
 
             }
+
         }
 
         public int Add()
@@ -116,5 +127,31 @@ namespace ClassLibrary
             DB.Execute("sproc_tblStaff_Update");
 
         }
+
+        public void Delete()
+        {
+            //Deletes The record pointed to by thisStaff
+            //Connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //Set the parameters for the stored procedures
+            DB.AddParameter("@StaffId", mThisStaff.StaffId);
+            //Execute the stored procedure
+            DB.Execute("sproc_tblStaff_Delete");
+        }
+
+        public void ReportsByName(string StaffName)
+        {
+            //Filters the records based on a full or partial name
+            //Connect to database
+            clsDataConnection DB = new clsDataConnection();
+            //Send the StaffName parameter to the database
+            DB.AddParameter("@StaffName", StaffName);
+            //Execute the stored procedure
+            DB.Execute("sproc_tblStaff_FilterByName");
+            //populate the array with the data table
+            PopulateArray(DB);
+        }
+
+
     }
 }
