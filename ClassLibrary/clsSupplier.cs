@@ -148,6 +148,10 @@ namespace ClassLibrary
             {
                 Error = Error + "the supplier name may not be blank : ";
             }
+            if (supplierName.Length > 20)
+            {
+                Error = Error + "the supplier nme must be less than 20 characters : ";
+            }
 
             return Error;
         }
