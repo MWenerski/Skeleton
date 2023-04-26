@@ -201,9 +201,9 @@ namespace ClassLibrary
             if (_phoneNumber.Length == 0)
             {
                 Error = Error + "Phone Number may be blank ";
-            } else if (_phoneNumber.Length > 10)
+            } else if (_phoneNumber.Length > 12)
             {
-                Error = Error + "Phone Number must be at most 10 characters ";
+                Error = Error + "Phone Number must be at most 12 characters ";
             } else if (_phoneNumber.Length < 7)
             {
                 Error = Error + "Phone Number has to be at least 7 characters ";

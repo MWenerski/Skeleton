@@ -260,6 +260,8 @@ namespace Testing3
         [TestMethod]
         public void ValidMethodOk()
         {
+            //Make sure the valid method returns the correct string using only good data
+            //create an instance of the class we want to create
             clsStaff aStaff = new clsStaff();
             String Error = "";
             Error = aStaff.Valid(hoursWorked, hourlyWage, phoneNumber, name, dateStarted);
@@ -656,7 +658,7 @@ namespace Testing3
         {
             clsStaff aStaff = new clsStaff();
             String Error = "";
-            string phoneNumber = "024567890";
+            string phoneNumber = "0245678900";
             Error = aStaff.Valid(hoursWorked, hourlyWage, phoneNumber, name, dateStarted);
             Assert.AreEqual(Error, "");
         }
@@ -666,7 +668,7 @@ namespace Testing3
         {
             clsStaff aStaff = new clsStaff();
             String Error = "";
-            string phoneNumber = "0234567890";
+            string phoneNumber = "023456789000";
             Error = aStaff.Valid(hoursWorked, hourlyWage, phoneNumber, name, dateStarted);
             Assert.AreEqual(Error, "");
         }
@@ -676,9 +678,9 @@ namespace Testing3
         {
             clsStaff aStaff = new clsStaff();
             String Error = "";
-            string phoneNumber = "023456789000";
+            string phoneNumber = "0234567890000";
             Error = aStaff.Valid(hoursWorked, hourlyWage, phoneNumber, name, dateStarted);
-            Assert.AreEqual(Error, "Phone Number must be at most 10 characters ");
+            Assert.AreEqual(Error, "Phone Number must be at most 12 characters ");
         }
 
         [TestMethod]
@@ -688,7 +690,7 @@ namespace Testing3
             String Error = "";
             string phoneNumber = "0234567890012345678900123456789001234567890012345678900123456789001234567890012345678900123456789001234567890012345678900123456789001234567";
             Error = aStaff.Valid(hoursWorked, hourlyWage, phoneNumber, name, dateStarted);
-            Assert.AreEqual(Error, "Phone Number must be at most 10 characters ");
+            Assert.AreEqual(Error, "Phone Number must be at most 12 characters ");
         }
 
         [TestMethod]
@@ -1044,9 +1046,21 @@ namespace Testing3
             clsStaffCollection FiliteredStaff = new clsStaffCollection();
             //Var to store the outcome
             Boolean Ok = true;
-            //Apply a name that does not exist
-            FiliteredStaff.ReportsByName("UYVgkjgadskl");
-            //Che
+            //Apply a name that does exist
+            FiliteredStaff.ReportsByName("Paul");
+            if (FiliteredStaff.Count == 1)
+            {
+                if(FiliteredStaff.StaffList[0].StaffId != 1)
+                {
+                    Ok = false;
+                }
+              
+            } else
+            {
+                Ok = false;
+            }
+            //Test to see there are no records
+            Assert.IsTrue(Ok);
         }
     }
 }
