@@ -8,9 +8,34 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the primary key with page level scope
+    Int32 SupplierID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the address to be processed
+        SupplierID = Convert.ToInt32(Session["ID"]);
+        if (IsPostBack == false)
+        {
+            if (SupplierID != -1)
+            {
+                //display the current data for the record
+                DisplaySupplier();
+            }
+        }
 
+    }
+    void DisplaySupplier()
+    {
+        clsSupplierCollection Suppliers = new clsSupplierCollection();
+        Suppliers.ThisSupplier.Find(SupplierID);
+        //display the datafor this record
+        txtSupplierID.Text = Suppliers.ThisSupplier.ID.ToString();
+        txtSupplierName.Text = Suppliers.ThisSupplier.SupplierName;
+        txtEmail.Text = Suppliers.ThisSupplier.Email;
+        txtDateAdded.Text = Suppliers.ThisSupplier.DateAdded.ToString();
+        txtContactNumber.Text = Suppliers.ThisSupplier.ContactNumber;
+        txtAddress.Text = Suppliers.ThisSupplier.Address;
+        chkOngoingContract.Checked = Suppliers.ThisSupplier.OngoingContract;
     }
 
     protected void btnOk_Click(object sender, EventArgs e)
@@ -18,18 +43,52 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsSupplier
         clsSupplier InSupplier = new clsSupplier();
         //capture the supplier name
-        InSupplier.ID = Convert.ToInt32(txtSupplierID.Text);
-        InSupplier.SupplierName = txtSupplierName.Text;
-        InSupplier.Email = txtEmail.Text;
-        InSupplier.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
-        InSupplier.ContactNumber = txtContactNumber.Text;
-        InSupplier.Address = txtAddress.Text;
-        InSupplier.OngoingContract = chkOngoingContract.Checked;
+        String SupplierName = txtSupplierName.Text;
+        String Email = txtEmail.Text;
+        String DateAdded = txtDateAdded.Text;
+        String ContactNumber = txtContactNumber.Text;
+        String Address = txtAddress.Text;
+        String Error = InSupplier.Valid(SupplierName, Email, DateAdded, ContactNumber, Address);
+        if (Error == "")
+        {
+            InSupplier.ID = SupplierID;
+            InSupplier.SupplierName = SupplierName ;
+            InSupplier.Email = Email;
+            InSupplier.DateAdded = Convert.ToDateTime(DateAdded);
+            InSupplier.ContactNumber = ContactNumber;
+            InSupplier.Address = Address;
+            InSupplier.OngoingContract = chkOngoingContract.Checked;
+            //create a new instance of the supplier collection
+            clsSupplierCollection SupplierList = new clsSupplierCollection();
+            //if this is a new record then add to the data
+            if (SupplierID == -1)
+            {
+                //set thisSupplier property
+                SupplierList.ThisSupplier = InSupplier;
+                //add the new record
+                SupplierList.Add();
+                
+            }
+            else
+            {
+                //find the record to update
+                SupplierList.ThisSupplier.Find(SupplierID);
+                //set the This Supplier property
+                SupplierList.ThisSupplier = InSupplier;
+                //update the record
+                SupplierList.Update();
+            }
+            //navigate to the viewer page
+            Response.Redirect("SupplierList.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
 
-        //store the address in the session object
-        Session["InSupplier"] = InSupplier;
-        //navigate to the viewer page
-        Response.Redirect("SupplierViewer.aspx");
+
+       
     }
 
     protected void btnFind_Click(object sender, EventArgs e)

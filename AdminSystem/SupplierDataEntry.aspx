@@ -9,10 +9,14 @@
         #form1 {
             height: 262px;
         }
+        .auto-style1 {
+            text-align: left;
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
+        <div class="auto-style1">
         <asp:Label ID="lblSupplierID" runat="server" Text="Supplier ID" width="102px"></asp:Label>
         <asp:TextBox ID="txtSupplierID" runat="server"></asp:TextBox>
         <asp:Button ID="btnFind" runat="server" Text="Find" OnClick="btnFind_Click" />
@@ -39,6 +43,8 @@
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 12px; top: 224px; position: absolute"></asp:Label>
         <asp:Button ID="btnOk" runat="server" OnClick="btnOk_Click" style="z-index: 1; left: 6px; top: 247px; position: absolute" Text="OK" />
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 51px; top: 247px; position: absolute" Text="Cancel" OnClick="btnCancel_Click" />
+       
+        </div>
        
     </form>
 </body>

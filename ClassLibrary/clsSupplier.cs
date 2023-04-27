@@ -109,7 +109,7 @@ namespace ClassLibrary
             //add the parameter for the supplier id tp search for
             DB.AddParameter("@SupplierID", SupplierID);
             //execute the stored procedure
-            DB.Execute("sproc_tblSupplier_Selectall");
+            DB.Execute("sproc_tblSupplier_FilterByAddressNo");
             //if one record is found (there should be either one or zero)
             if (DB.Count == 1)
             {
