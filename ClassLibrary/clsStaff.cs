@@ -137,6 +137,10 @@ namespace ClassLibrary
             {
                 Error = Error + "Hours worked may be blank ";
                 
+            } else if (_hoursWorked[0] == ' ')
+            {
+                //If the string starts with a space return an error message
+                Error = Error + "Hours worked can not start with a space ";
             }
             try
             {
@@ -165,6 +169,10 @@ namespace ClassLibrary
             {
                 Error = Error + "Hourly wage may be blank ";
                 
+            } else if (_hourlyWage[0] == ' ')
+            {
+                //If the string starts with a space return an error message
+                Error = Error + "Hourly Wage can not start with a space ";
             }
             try
             {
@@ -192,16 +200,26 @@ namespace ClassLibrary
             if(_name.Length == 0)
             {
                 Error = Error + "Name may be blank ";
-            } else if(_name.Length > 50)
+            } else if (_name[0] == ' ')
+            {
+                //Record an error if name starts with a space
+                Error = Error + "Name can not start with a space ";
+            }
+            else if (_name.Length > 50)
             {
                 Error = Error + "Name has be 50 characters or less ";
             }
+
 
             //Make sure phonenumber has a valid amount of characters
             if (_phoneNumber.Length == 0)
             {
                 Error = Error + "Phone Number may be blank ";
-            } else if (_phoneNumber.Length > 12)
+            } else if (_phoneNumber[0] == ' ') {
+                //Record an error message if phone number starts with a space
+                Error = Error + "PhoneNumber can not start with a space ";
+            }
+            else if (_phoneNumber.Length > 12)
             {
                 Error = Error + "Phone Number must be at most 12 characters ";
             } else if (_phoneNumber.Length < 7)
@@ -209,7 +227,7 @@ namespace ClassLibrary
                 Error = Error + "Phone Number has to be at least 7 characters ";
             }
             //Makes sure Phone Number starts with a + or 0
-            if (!_phoneNumber.StartsWith("0") && !_phoneNumber.StartsWith("+")){
+            else if (!_phoneNumber.StartsWith("0") && !_phoneNumber.StartsWith("+")){
                 Error = Error + "Phone number must start with 0 or + ";
             }
             //Make sure that Phone Number is only valid characters

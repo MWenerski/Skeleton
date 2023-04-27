@@ -8,6 +8,7 @@ namespace Testing3
     [TestClass]
     public class tstStaff
     {
+        //'Good data'
         string hourlyWage = "9";
         string hoursWorked = "45";
         string phoneNumber = "01234567";
@@ -221,11 +222,11 @@ namespace Testing3
             //Boolean variable to record if data is ok
             Boolean OK = true;
             //Create some test data
-            int staffId = 1;
+            int staffId = 3;
             //Invoke the method
             found = aStaff.Find(staffId);
             //Check available to work
-            if (aStaff.availableToWork != false)
+            if (aStaff.availableToWork != true)
             {
                 OK = false;
             }
@@ -271,6 +272,7 @@ namespace Testing3
         [TestMethod]
         public void HoursWorkedExtremeMin()
         {
+            //test an hours worked that is extremely below min
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hoursWorked = "-200";
@@ -281,6 +283,7 @@ namespace Testing3
         [TestMethod]
         public void HoursWorkedMinMinusOne()
         {
+            //Test an hours worked that is one below min
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hoursWorked = "-1";
@@ -291,6 +294,7 @@ namespace Testing3
         [TestMethod]
         public void HoursWorkedMin()
         {
+            //Test an hours worked that is on min
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hoursWorked = "0";
@@ -301,6 +305,7 @@ namespace Testing3
         [TestMethod]
         public void HoursWorkedMinplusOne()
         {
+            //Test an hours worked that one over min
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hoursWorked = "1";
@@ -312,6 +317,7 @@ namespace Testing3
         [TestMethod]
         public void HoursWorkedNotBlank()
         {
+            //test an hours worked that is blank
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hoursWorked = "";
@@ -322,6 +328,7 @@ namespace Testing3
         [TestMethod]
         public void HoursWorkedMid()
         {
+            //test an hours worked that is in the middle
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hoursWorked = "24";
@@ -332,6 +339,7 @@ namespace Testing3
         [TestMethod]
         public void HoursWorkedMaxMinusOne()
         {
+            //Test an hours worked one below max
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hoursWorked = "47";
@@ -343,6 +351,7 @@ namespace Testing3
         [TestMethod]
         public void HoursWorkedMax()
         {
+            //Test an hours worked on max
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hoursWorked = "48";
@@ -353,6 +362,7 @@ namespace Testing3
         [TestMethod]
         public void HoursWorkedMaxPlusOne()
         {
+            //Test an hours worked one over max
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hoursWorked = "500";
@@ -363,6 +373,7 @@ namespace Testing3
         [TestMethod]
         public void HoursWorkedExtremeMax()
         {
+            //Test an hours worked that is extremely over max
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hoursWorked = "1000";
@@ -374,6 +385,7 @@ namespace Testing3
         [TestMethod]
         public void HoursWorkedInvalidDataType1()
         {
+            //Test an hours worked that is a string
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hoursWorked = "hello";
@@ -384,6 +396,7 @@ namespace Testing3
         [TestMethod]
         public void HoursWorkedInvalidDataType2()
         {
+            //Test an hours worked that is a boolean
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hoursWorked = "true";
@@ -394,6 +407,7 @@ namespace Testing3
         [TestMethod]
         public void HoursWorkedInvalidDataType3()
         {
+            //Test an hours worked that is a character
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hoursWorked = "c";
@@ -404,6 +418,7 @@ namespace Testing3
         [TestMethod]
         public void HourlyWageExtremeMin()
         {
+            //Test an hourly wage extremely below the min
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hourlyWage = "-200";
@@ -414,6 +429,7 @@ namespace Testing3
         [TestMethod]
         public void HourlyWageMinMinusOne()
         {
+            //Test an hourly wage one below min
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hourlyWage = "4.28";
@@ -424,6 +440,7 @@ namespace Testing3
         [TestMethod]
         public void HourlyWageMin()
         {
+            //test an hourly wage on min
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hourlyWage = "5.28";
@@ -435,6 +452,7 @@ namespace Testing3
         [TestMethod]
         public void HourlyWageMinPlusOne()
         {
+            //Test a hourly wage that is one above min
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hourlyWage = "6.28";
@@ -445,6 +463,7 @@ namespace Testing3
         [TestMethod]
         public void HourlyWageNotBlank()
         {
+            //Test a blank hourly wage
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hourlyWage = "";
@@ -455,6 +474,7 @@ namespace Testing3
         [TestMethod]
         public void HourlyWageMid()
         {
+            //Test an hourly wage in the middle
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hourlyWage = "52.64";
@@ -465,6 +485,7 @@ namespace Testing3
         [TestMethod]
         public void HourlyWageMaxMinusOne()
         {
+            //Test an hourly wage one below max
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hourlyWage = "99";
@@ -475,6 +496,7 @@ namespace Testing3
         [TestMethod]
         public void HourlyWageMax()
         {
+            //Test an hourly wage that is on max
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hourlyWage = "100";
@@ -485,6 +507,7 @@ namespace Testing3
         [TestMethod]
         public void HourlyWageMaxplusOne()
         {
+            //Test an hourlywage that is one above max
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hourlyWage = "101";
@@ -495,6 +518,7 @@ namespace Testing3
         [TestMethod]
         public void HourlyWageExtremeMax()
         {
+            //Test an hourlywage that is extremely over max
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hourlyWage = "1000";
@@ -505,6 +529,7 @@ namespace Testing3
         [TestMethod]
         public void HourlyWageInvalidDataType1()
         {
+            //Test an Hourly wage that is a string
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hourlyWage = "hello";
@@ -515,6 +540,7 @@ namespace Testing3
         [TestMethod]
         public void HourlyWageInvalidDataType2()
         {
+            //Test an hourly wage that is a boolean
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hourlyWage = "false";
@@ -525,16 +551,29 @@ namespace Testing3
         [TestMethod]
         public void HourlyWageInvalidDataType3()
         {
+            //Test an hourly wage that is a character
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string hourlyWage = "c";
             Error = aStaff.Valid(hoursWorked, hourlyWage, phoneNumber, name, dateStarted);
             Assert.AreEqual(Error, "Hourly Wage must be a valid decimal ");
         }
+        
+        [TestMethod]
+        public void HourlyWageStaringWithSpace()
+        {
+            //Test an hourly wage starting with a space
+            clsStaff aStaff = new clsStaff();
+            String Error = "";
+            string hourlyWage = " 52.64";
+            Error = aStaff.Valid(hoursWorked, hourlyWage, phoneNumber, name, dateStarted);
+            Assert.AreEqual(Error, "Hourly Wage can not start with a space ");
+        }
 
         [TestMethod]
         public void NameMinMinusOne()
         {
+            //Test a name that is one below min
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string name = "";
@@ -545,6 +584,7 @@ namespace Testing3
         [TestMethod]
         public void NameMin()
         {
+            //test a name that is on the min
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string name = "A";
@@ -555,6 +595,7 @@ namespace Testing3
         [TestMethod]
         public void NameMinPlusOne()
         {
+            //Test a name that is min plus one
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string name = "AA";
@@ -565,6 +606,7 @@ namespace Testing3
         [TestMethod]
         public void NameMid()
         {
+            //Test a name that is in the middle
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string name = "AAAAAAAAAAAAAAAAAAAAAAAAA";
@@ -575,6 +617,7 @@ namespace Testing3
         [TestMethod]
         public void NameMaxMinusOne()
         {
+            //Test a name that is one below the max
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string name = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
@@ -585,6 +628,7 @@ namespace Testing3
         [TestMethod]
         public void NameMax()
         {
+            //Test a name that is on the max
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string name = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
@@ -595,6 +639,7 @@ namespace Testing3
         [TestMethod]
         public void NameMaxPlusOne()
         {
+            //Test a name that is one over the max
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string name = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
@@ -605,6 +650,7 @@ namespace Testing3
         [TestMethod]
         public void NameExtremeMax()
         {
+            //Test a name extremely over the max
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string name = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
@@ -613,18 +659,31 @@ namespace Testing3
         }
 
         [TestMethod]
+        public void NameStartingWithSpace()
+        {
+            //Test a name that starts with a space
+            clsStaff aStaff = new clsStaff();
+            String Error = "";
+            string name = " AAAAAAAAAAAAAAAAAAAAAAAAA";
+            Error = aStaff.Valid(hoursWorked, hourlyWage, phoneNumber, name, dateStarted);
+            Assert.AreEqual(Error, "Name can not start with a space ");
+        }
+
+        [TestMethod]
         public void PhoneNumberExtremeMin()
         {
+            //Test a phonenumber extremely below the min
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string phoneNumber = "";
             Error = aStaff.Valid(hoursWorked, hourlyWage, phoneNumber, name, dateStarted);
-            Assert.AreEqual(Error, "Phone Number may be blank Phone number must start with 0 or + ");
+            Assert.AreEqual(Error, "Phone Number may be blank ");
         }
 
         [TestMethod]
         public void PhoneNumberMinMinusOne()
         {
+            //Test a phone number on below the min
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string phoneNumber = "023456";
@@ -635,6 +694,7 @@ namespace Testing3
         [TestMethod]
         public void PhoneNumberMin()
         {
+            //Test a phonenumber on the min
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string phoneNumber = "0234567";
@@ -645,6 +705,7 @@ namespace Testing3
         [TestMethod]
         public void PhoneNumberMinPlusOne()
         {
+            //Test a phone number one above the min
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string phoneNumber = "02345678";
@@ -656,6 +717,7 @@ namespace Testing3
         [TestMethod]
         public void PhoneNumberMaxMinusOne()
         {
+            //Test a phonenumber one below the max
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string phoneNumber = "0245678900";
@@ -666,6 +728,7 @@ namespace Testing3
         [TestMethod]
         public void PhoneNumberMax()
         {
+            //Test a phonenumber that is on the max
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string phoneNumber = "023456789000";
@@ -676,6 +739,7 @@ namespace Testing3
         [TestMethod]
         public void PhoneNumberMaxPlusOne()
         {
+            //Test a phonenumber that is one over the max
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string phoneNumber = "0234567890000";
@@ -686,6 +750,7 @@ namespace Testing3
         [TestMethod]
         public void PhoneNumberExtremeMax()
         {
+            //Test a phonenumber extremely over the max characters
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string phoneNumber = "0234567890012345678900123456789001234567890012345678900123456789001234567890012345678900123456789001234567890012345678900123456789001234567";
@@ -696,6 +761,7 @@ namespace Testing3
         [TestMethod]
         public void PhoneNumberEndingWithLetter()
         {
+            //Test a phone number that ends with a letter
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string phoneNumber = "0121356A";
@@ -703,8 +769,9 @@ namespace Testing3
             Assert.AreEqual(Error, "Phone Number should only contain numerical values, + or a space ");
         }
 
-        public void PhoneNumberEndingMidLetter()
+        public void PhoneNumberMidLetter()
         {
+            //Test a phonenumber that has a letter in the middle of it
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string phoneNumber = "0121A356";
@@ -712,9 +779,20 @@ namespace Testing3
             Assert.AreEqual(Error, "Phone Number should only contain numerical values, + or a space");
         }
 
+        public void PhoneNumberStartingLetter()
+        {
+            //Test a phonenumber that starts with an invalid character
+            clsStaff aStaff = new clsStaff();
+            String Error = "";
+            string phoneNumber = "A0121356";
+            Error = aStaff.Valid(hoursWorked, hourlyWage, phoneNumber, name, dateStarted);
+            Assert.AreEqual(Error, "Phone Number should only contain numerical values, + or a space");
+        }
+
         [TestMethod]
         public void PhoneNumberStartingWithPlus()
         {
+            //Test a phone number starting with a '+'
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string phoneNumber = "+44121356";
@@ -726,6 +804,7 @@ namespace Testing3
         [TestMethod]
         public void PhoneNumberWithSpace()
         {
+            //Test a phone number that has a space in it
             clsStaff aStaff = new clsStaff();
             String Error = "";
             string phoneNumber = "0121 4356";
@@ -734,8 +813,20 @@ namespace Testing3
         }
 
         [TestMethod]
+        public void PhoneNumberStartsWithSpace()
+        {
+            //Test a phonenumber that starts with a space
+            clsStaff aStaff = new clsStaff();
+            String Error = "";
+            string phoneNumber = " 01214356";
+            Error = aStaff.Valid(hoursWorked, hourlyWage, phoneNumber, name, dateStarted);
+            Assert.AreEqual(Error, "PhoneNumber can not start with a space ");
+        }
+
+        [TestMethod]
         public void DateExtremeMin()
         {
+            //Test a date that is extremely below the min
             clsStaff aStaff = new clsStaff();
             String Error = "";
             DateTime testDate = DateTime.Now.Date;
@@ -748,6 +839,7 @@ namespace Testing3
         [TestMethod]
         public void DateMinMinusOne()
         {
+            //Test a date that is one below the min
             clsStaff aStaff = new clsStaff();
             String Error = "";
             DateTime testDate = DateTime.Now.Date;
@@ -760,6 +852,7 @@ namespace Testing3
         [TestMethod]
         public void DateMin()
         {
+            //Test a date that is on the min
             clsStaff aStaff = new clsStaff();
             String Error = "";
             DateTime testDate = DateTime.Now.Date;
@@ -771,6 +864,7 @@ namespace Testing3
         [TestMethod]
         public void DateMinPlusOne()
         {
+            //Test a date one over the min
             clsStaff aStaff = new clsStaff();
             String Error = "";
             DateTime testDate = DateTime.Now.Date;
@@ -783,6 +877,7 @@ namespace Testing3
         [TestMethod]
         public void DateMaxMinusOne()
         {
+            //Test a date one below the max
             clsStaff aStaff = new clsStaff();
             String Error = "";
             DateTime testDate = DateTime.Now.Date;
@@ -795,6 +890,7 @@ namespace Testing3
         [TestMethod]
         public void DateMax()
         {
+            //Test a date on the max
             clsStaff aStaff = new clsStaff();
             String Error = "";
             DateTime testDate = DateTime.Now.Date;
@@ -807,6 +903,7 @@ namespace Testing3
         [TestMethod]
         public void DateMaxPlusOne()
         {
+            //Test a date one over max
             clsStaff aStaff = new clsStaff();
             String Error = "";
             DateTime testDate = DateTime.Now.Date;
@@ -819,6 +916,7 @@ namespace Testing3
         [TestMethod]
         public void DateExtremeMax()
         {
+            //Test a date extremely over max
             clsStaff aStaff = new clsStaff();
             String Error = "";
             DateTime testDate = DateTime.Now.Date;

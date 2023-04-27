@@ -19,7 +19,7 @@
             <asp:Label ID="lblDateJoined" runat="server" style="z-index: 1; left: 168px; top: 270px; position: absolute" Text="Date Joined" width="72px"></asp:Label>
             <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 30px; top: 460px; position: absolute" Text=""></asp:Label>
             <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 28px; top: 499px; position: absolute" Text="OK" />
-            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 100px; top: 497px; position: absolute" Text="Cancel" />
+            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 100px; top: 497px; position: absolute" Text="Cancel" OnClick="btnCancel_Click" />
             <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 344px; top: 20px; position: absolute" Text="Find" />
             <asp:TextBox ID="txtStaffId" runat="server" style="z-index: 1; left: 145px; top: 25px; position: absolute">Enter text here</asp:TextBox>
             <asp:Label ID="lblSttaffId" runat="server" style="z-index: 1; left: 20px; top: 25px; position: absolute; width: 66px;" Text="Staff Id"></asp:Label>

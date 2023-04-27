@@ -93,22 +93,42 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
+        //create an instance of the clsStaff class
         clsStaff aStaff = new clsStaff();
         Int32 staffNo;
         Boolean found = false;
-        staffNo = Convert.ToInt32(txtStaffId.Text);
-        found = aStaff.Find(staffNo);
-        if (found == true)
+        //Make sure that inputted staffid is a valid integer
+        try
         {
-            txtHourlyWage.Text = aStaff.hourlyWage.ToString();
-            txtHoursWorked.Text = aStaff.hoursWorked.ToString();
-            txtStaffName.Text = aStaff.name;
-            txtStaffPhoneNumber.Text = aStaff.phoneNumber;
-            chckAvailableToWork.Checked = aStaff.availableToWork;
-            lblDate.Text = "Date Joined: " + aStaff.dateStarted.ToString();
-        } else
+            staffNo = Convert.ToInt32(txtStaffId.Text);
+            found = aStaff.Find(staffNo);
+            if (found == true)
+            {
+                //Output the found details
+                txtHourlyWage.Text = aStaff.hourlyWage.ToString();
+                txtHoursWorked.Text = aStaff.hoursWorked.ToString();
+                txtStaffName.Text = aStaff.name;
+                txtStaffPhoneNumber.Text = aStaff.phoneNumber;
+                chckAvailableToWork.Checked = aStaff.availableToWork;
+                lblDate.Text = "Date Joined: " + aStaff.dateStarted.ToString();
+                lblError.Text = "";
+            }
+            else
+            {
+                //output an error if there is not any data linked to the integer enetered
+                lblError.Text = "ERROR- DATA NOT FOUND!";
+            }
+        } catch
         {
-            lblError.Text = "ERROR- DATA NOT FOUND!";
+            //Output an error if the input is not a valid integer
+            lblError.Text = "ERROR - staffid has to be valid integer!";
         }
+        
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //Redirect to the main page
+        Response.Redirect("StaffList.aspx");
     }
 }

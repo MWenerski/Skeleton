@@ -111,7 +111,7 @@ public partial class _1_List : System.Web.UI.Page
         //Set the name of the primary key
         lstStaffList.DataValueField = "StaffId";
         //Set the name of the field to display
-        lstStaffList.DataTextField = "StaffName";
+        lstStaffList.DataTextField = "name";
         //Bind the data to the list
         lstStaffList.DataBind();
     }
