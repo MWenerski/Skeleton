@@ -98,16 +98,17 @@ namespace Testing1
         {
             clsCustomerCollection AllCustomers = new clsCustomerCollection();
             clsCustomer TestItem = new clsCustomer();
-            Int32 PrimaryKey = 0;
+            Int32 PrimaryKey = 17;
             TestItem.Username = "Bad";
             TestItem.Password = "Man";
             TestItem.Email = "BM@gmail.com";
             TestItem.Verified = true;
             TestItem.DateAdded = DateTime.Today.Date;
-
-            //Add() should jump to Collection but jomps to clsCustomer
-            AllCustomers.ThisCustomer.Add();
             TestItem.CustomerID = PrimaryKey;
+            AllCustomers.ThisCustomer = TestItem;
+            PrimaryKey = AllCustomers.Add();
+            TestItem.CustomerID = PrimaryKey;
+            
             AllCustomers.ThisCustomer.Find(PrimaryKey);
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }

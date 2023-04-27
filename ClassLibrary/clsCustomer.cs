@@ -99,15 +99,15 @@ namespace ClassLibrary
             //connection string
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@CustomerID", CustomerID);
-            DB.Execute("sproc_tblCustomer_FilterByCustomerID");
+            DB.Execute("sproc_tblCustomer_SelectAll");
             if (DB.Count == 1)
             {
-                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[17]["CustomerID"]);
-                mUsername = Convert.ToString(DB.DataTable.Rows[17]["Username"]);
-                mPassword = Convert.ToString(DB.DataTable.Rows[17]["Password"]);
-                mEmail = Convert.ToString(DB.DataTable.Rows[17]["Email"]);
-                mVerified = Convert.ToBoolean(DB.DataTable.Rows[17]["Verified"]);
-                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[17]["DateCreated"]);
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
+                mUsername = Convert.ToString(DB.DataTable.Rows[0]["Username"]);
+                mPassword = Convert.ToString(DB.DataTable.Rows[0]["Password"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
+                mVerified = Convert.ToBoolean(DB.DataTable.Rows[0]["Verified"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateCreated"]);
                 return true;
             }
             else 

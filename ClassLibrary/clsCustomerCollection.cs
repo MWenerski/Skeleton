@@ -63,6 +63,7 @@ namespace ClassLibrary
             DB.AddParameter("@Email", mThisCustomer.Email);
             DB.AddParameter("@Verified", mThisCustomer.Verified);
             DB.AddParameter("@DateAdded", mThisCustomer.DateAdded);
+            DB.AddParameter("@CustomerID", mThisCustomer.CustomerID);
             return DB.Execute("sproc_tblCustomer_Insert");
         }
 
