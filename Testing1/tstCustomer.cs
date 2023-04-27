@@ -143,9 +143,9 @@ namespace Testing1
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerID = 17;
+            Int32 CustomerID = 0;
             Found = AnCustomer.Find(CustomerID);
-            if (AnCustomer.CustomerID != 17)
+            if (AnCustomer.CustomerID != 0)
             {
                 OK = false;
             }
