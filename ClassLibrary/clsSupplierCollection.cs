@@ -47,56 +47,11 @@ namespace ClassLibrary
         //constructor
         public clsSupplierCollection()
         {
-            //var for the index 
-            Int32 Index = 0;
-            //var to store the record count
-            Int32 RecordCount = 0;
             //object for data connection
             clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure
             DB.Execute("sproc_tblSupplier_Selectall1");
-            //get the count of records
-            RecordCount = DB.Count;
-            //while there are records to process
-            while (Index < RecordCount)
-            {
-                clsSupplier InSupplier = new clsSupplier();
-                //read the fields from the current record
-                InSupplier.ID = Convert.ToInt32(DB.DataTable.Rows[Index]["SupplierID"]);
-                InSupplier.SupplierName = Convert.ToString(DB.DataTable.Rows[Index]["SupplierName"]);
-                InSupplier.Email = Convert.ToString(DB.DataTable.Rows[Index]["Email"]);
-                InSupplier.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAdded"]);
-                InSupplier.ContactNumber = Convert.ToString(DB.DataTable.Rows[Index]["ContactNumber"]);
-                InSupplier.Address = Convert.ToString(DB.DataTable.Rows[Index]["Address"]);
-                InSupplier.OngoingContract = Convert.ToBoolean(DB.DataTable.Rows[Index]["OngoingContract"]);
-                //add the record to the private data member
-                mSupplierList.Add(InSupplier);
-                Index++;
-            }
-            /*//create the items of the test data
-            clsSupplier TestItem = new clsSupplier();
-            //set its properties
-            TestItem.ID = 1;
-            TestItem.SupplierName = "name";
-            TestItem.Email = "email";
-            TestItem.DateAdded = DateTime.Now.Date;
-            TestItem.ContactNumber = "contactnumber";
-            TestItem.Address = "address";
-            TestItem.OngoingContract = true;
-            //add the item to the list
-            mSupplierList.Add(TestItem);
-            // re initialise the object
-            TestItem = new clsSupplier();
-            //set the properties
-            TestItem.ID = 2;
-            TestItem.SupplierName = "name1";
-            TestItem.Email = "email1";
-            TestItem.DateAdded = DateTime.Now.Date;
-            TestItem.ContactNumber = "contactnumber2";
-            TestItem.Address = "address2";
-            TestItem.OngoingContract = true;
-            mSupplierList.Add(TestItem);*/
-
+            PopulateArray(DB);
         }
 
         public int Add()
@@ -129,6 +84,47 @@ namespace ClassLibrary
             //execute the query returning the primary key
             DB.Execute("sproc_tblSupplier_Update");
 
+        }
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@SupplierID", mThisSupplier.ID);
+            DB.Execute("sproc_tblSupplier_Delete");
+        }
+        public void ReportByAddress(String Address)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Address", Address);
+            DB.Execute("sproc_tblSupplier_FilterByAddressNo");
+            PopulateArray(DB);
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+
+            //var for the index 
+            Int32 Index = 0;
+            //var to store the record count
+            Int32 RecordCount;
+            //get the count of records
+            RecordCount = DB.Count;
+            //clear the private array list
+            mSupplierList = new List<clsSupplier>();
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                clsSupplier InSupplier = new clsSupplier();
+                //read the fields from the current record
+                InSupplier.ID = Convert.ToInt32(DB.DataTable.Rows[Index]["SupplierID"]);
+                InSupplier.SupplierName = Convert.ToString(DB.DataTable.Rows[Index]["SupplierName"]);
+                InSupplier.Email = Convert.ToString(DB.DataTable.Rows[Index]["Email"]);
+                InSupplier.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAdded"]);
+                InSupplier.ContactNumber = Convert.ToString(DB.DataTable.Rows[Index]["ContactNumber"]);
+                InSupplier.Address = Convert.ToString(DB.DataTable.Rows[Index]["Address"]);
+                InSupplier.OngoingContract = Convert.ToBoolean(DB.DataTable.Rows[Index]["OngoingContract"]);
+                //add the record to the private data member
+                mSupplierList.Add(InSupplier);
+                Index++;
+            }
         }
     }
 }
