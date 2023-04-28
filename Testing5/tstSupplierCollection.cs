@@ -152,5 +152,75 @@ namespace Testing5
 
 
         }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsSupplierCollection AllSuppliers = new clsSupplierCollection();
+            clsSupplier TestItem = new clsSupplier();
+            //var to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.ID = 3;
+            TestItem.SupplierName = "name";
+            TestItem.Email = "email";
+            TestItem.DateAdded = DateTime.Now.Date;
+            TestItem.ContactNumber = "contactnumber";
+            TestItem.Address = "address";
+            TestItem.OngoingContract = true;
+            //set ThisSupplier to the test data
+            AllSuppliers.ThisSupplier = TestItem;
+            //add the record
+            PrimaryKey = AllSuppliers.Add();
+            //set the primary key of the test data
+            TestItem.ID = PrimaryKey;
+            //find the record
+            AllSuppliers.ThisSupplier.Find(PrimaryKey);
+            //delete the record
+            AllSuppliers.Delete();
+            //now find the record
+            Boolean Found = AllSuppliers.ThisSupplier.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+
+        }
+        [TestMethod]
+        public void ReportByAddressMethodOK()
+        {
+            clsSupplierCollection AllSuppliers = new clsSupplierCollection();
+            clsSupplierCollection FilteredSuppliers = new clsSupplierCollection();
+            FilteredSuppliers.ReportByAddress("");
+            //test to see
+            Assert.AreEqual(AllSuppliers.Count, FilteredSuppliers.Count);
+        }
+        [TestMethod]
+        public void ReportByAddressNoneFound()
+        {
+            clsSupplierCollection FilteredSuppliers = new clsSupplierCollection();
+            FilteredSuppliers.ReportByAddress("xxxxx");
+            Assert.AreEqual(0, FilteredSuppliers.Count);
+        }
+        [TestMethod]
+        public void ReportByAddressTestDataFound()
+        {
+            clsSupplierCollection FilteredSuppliers = new clsSupplierCollection();
+            Boolean OK = true;
+            FilteredSuppliers.ReportByAddress("Birmingham");
+            if (FilteredSuppliers.Count == 2)
+            {
+                if (FilteredSuppliers.SupplierList[0].ID != 1)
+                {
+                    OK = false;
+                }
+                if (FilteredSuppliers.SupplierList[0].ID != 4)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
     }
 }
