@@ -1,0 +1,54 @@
+﻿<?xml version="1.0"?>
+<!-- 
+  Visual Studio global web project settings.
+-->
+<VisualWebDeveloper>
+
+  <comReferences>
+    <reference Name="interop.coloaderlib" ID="{6A1A7D39-8449-4287-8EF0-CE256582C940}\8.0\0"/>
+    <reference Name="interop.aac3572dramhallib" ID="{266D58DB-1313-40CB-83AD-83DF65283594}\1.0\0"/>
+    <reference Name="interop.dtshlib" ID="{1FDA955A-61FF-11DA-978C-0008744FAAB7}\1.0\0"/>
+    <reference Name="interop.mbaeapilib" ID="{1878A0BC-B9A1-4BD0-B67E-BE35EDE35A96}\1.0\0"/>
+    <reference Name="interop.cmi20" ID="{F31091E5-B0A8-11D6-B6FC-005056C00008}\2.0\0"/>
+    <reference Name="interop.atllib" ID="{44EC0535-400F-11D0-9DCD-00A0C90391D3}\1.0\0"/>
+    <reference Name="interop.quartztypelib" ID="{56A868B0-0AD4-11CE-B03A-0020AF0BA770}\1.0\0"/>
+    <reference Name="interop.aackingstondramhallib" ID="{714D98C4-02BF-42B4-A711-09490ABE89ED}\1.0\0"/>
+    <reference Name="interop.activeds" ID="{97D25DB0-0363-11CF-ABC4-02608C9E7553}\1.0\0"/>
+    <reference Name="interop.softwareupdateadminlib" ID="{0AF768AC-4FBD-4914-B847-F4E13C984926}\1.0\0"/>
+    <reference Name="interop.apclienthelppane" ID="{8CEC5860-07A1-11D9-B15E-000D56BFE6EE}\1.0\0"/>
+    <reference Name="interop.dmview2lib" ID="{AEB84C80-95DC-11D0-B7FC-B61140119C4A}\1.0\0"/>
+    <reference Name="interop.comsnaplib" ID="{410381CD-AF42-11D1-8F10-00C04FC2C17B}\1.0\0"/>
+    <reference Name="interop.comadmin" ID="{F618C513-DFB8-11D1-A2CF-00805FC79235}\1.0\0"/>
+    <reference Name="interop.azroleslib" ID="{11A8B8EE-BF30-409A-8EF7-3A143EF70332}\1.0\0"/>
+    <reference Name="interop.mshelpservices" ID="{8CEC5899-07A1-11D9-B15E-000D56BFE6EE}\1.0\0"/>
+    <reference Name="interop.bonjour" ID="{18FBED6D-F2B7-4EC8-A4A4-46282E635308}\1.0\0"/>
+    <reference Name="interop.ctvlib" ID="{CD6C7865-5864-11D0-ABF0-0020AF6B0B7A}\1.0\0"/>
+    <reference Name="interop.cryptextlib" ID="{7444C709-39BF-11D1-8CD9-00C04FC29D45}\1.0\0"/>
+    <reference Name="interop.autohelperlib" ID="{8404DD0E-7A27-4399-B1D9-6492B7DD7F7F}\1.0\0"/>
+    <reference Name="interop.helppane" ID="{8CEC5857-07A1-11D9-B15E-000D56BFE6EE}\1.0\0"/>
+    <reference Name="interop.aacexthallib" ID="{6DEC4ECD-FBF7-44DB-B3F8-D1B6574BA862}\1.0\0"/>
+    <reference Name="interop.skypesdk" ID="{F1CBBA3D-683A-4612-97EB-AF035E3B6218}\1.0\0"/>
+    <reference Name="interop.accessibilitycpladminlib" ID="{714DD4F6-7676-4BDE-925A-C2FEC2073F36}\1.0\0"/>
+    <reference Name="interop.dexterlib" ID="{78530B68-61F9-11D2-8CAD-00A024580902}\1.0\0"/>
+    <reference Name="interop.binaryinfolib" ID="{66CED9EA-90CD-4010-BFA3-0B5009727741}\1.0\0"/>
+    <reference Name="interop.accessibility" ID="{1EA4DBF0-3C3B-11CF-810C-00AA00389B71}\1.1\0"/>
+    <reference Name="interop.dfsshlexlib" ID="{ECCDF535-45CC-11CE-B9BF-0080C87CDBA6}\1.0\0"/>
+    <reference Name="interop.mbnapi" ID="{DCBBBAB6-0001-4BBB-AAEE-338E368AF6FA}\1.0\0"/>
+    <reference Name="interop.cttunesvrlib" ID="{7CDB4C42-D09D-4532-AF9D-B941DF2F3E24}\1.0\0"/>
+    <reference Name="interop.certenrolllib" ID="{728AB348-217D-11DA-B2A4-000E7BBB2B09}\1.0\0"/>
+    <reference Name="interop.compresslib" ID="{A8C72C26-822A-44D4-B28F-2ED39009EE51}\1.0\0"/>
+    <reference Name="interop.atkexcomsvclib" ID="{34AAD71E-0356-470C-94B7-593BE46311BB}\1.0\0"/>
+    <reference Name="interop.asuscertservicelib" ID="{57854199-4FBC-4438-87C1-A0E9FA206A33}\1.0\0"/>
+    <reference Name="interop.appxmanagerlib" ID="{91DD97E6-FD92-4DC0-BA54-7A893DD1238A}\1.0\0"/>
+    <reference Name="interop.addinloaderlib" ID="{C0529B10-073A-4754-9BB0-72325D80D122}\1.0\0"/>
+    <reference Name="interop.comsvcslib" ID="{2A005C00-A5DE-11CF-9E66-00AA00A3F464}\1.0\0"/>
+    <reference Name="interop.appprelaunchlib" ID="{15199C39-B5E0-4E9D-A6F2-B69C74D02724}\1.0\0"/>
+    <reference Name="interop.custreglib" ID="{640D3148-A423-11D2-B943-00C04F79D22F}\1.0\0"/>
+    <reference Name="interop.ciclib" ID="{3D5905E0-523C-11D1-9FEA-00600832DB4A}\1.0\0"/>
+    <reference Name="interop.certencodelib" ID="{13199C00-7494-11D0-8816-00A0C903B83C}\1.0\0"/>
+    <reference Name="interop.certcomlib" ID="{179B730B-9F8B-4E78-92AF-5F788A047EBD}\1.0\0"/>
+    <reference Name="interop.mscoree" ID="{5477469E-83B1-11D2-8B49-00A0C9B7C9C4}\2.4\0"/>
+    <reference Name="interop.certclilib" ID="{372FCE32-4324-11D0-8810-00A0C903B83C}\1.0\0"/>
+    <reference Name="interop.comrepllib" ID="{98315905-7BE5-11D2-ADC1-00A02463D6E7}\1.0\0"/>
+  </comReferences>
+</VisualWebDeveloper>

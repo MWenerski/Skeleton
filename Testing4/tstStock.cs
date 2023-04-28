@@ -60,12 +60,116 @@ namespace Testing4
         [TestMethod]
         public void ReleaseDateOK()
         {
+
             clsStock AStock = new clsStock();
-            //DateTime TestData = (2000, 9 ,10) ;
+            String TestData = new DateTime(2022, 5, 10).ToString("dd/MM/yyyy");
+            AStock.ReleaseDate = DateTime.Parse(TestData);
+            Assert.AreEqual(AStock.ReleaseDate.ToString("dd/MM/yyyy"), TestData);
+        }
+        [TestMethod]
+        public void FindOK()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Int32 GameID = 1;
+            Found = AStock.Find(GameID);
+            Assert.IsTrue(Found);
+
+        }
+        [TestMethod]
+        public void TestGameIDFound()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 GameID = 1;
+            Found = AStock.Find(GameID);
+            if (AStock.GameID != 1) OK = false;
+            Assert.IsTrue(OK);
+
+        }
+        public void TestGameName()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 GameID = 1;
+            Found = AStock.Find(GameID);
+            if (AStock.GameName != "name") OK = false;
+            Assert.IsTrue(OK);
+
+        }
+        public void TestGamePrice()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 GameID = 1;
+            Found = AStock.Find(GameID);
+            if (AStock.GamePrice != 10.00) OK = false;
+            Assert.IsTrue(OK);
+
+        }
+        public void TestAmountInStock()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 GameID = 1;
+            Found = AStock.Find(GameID);
+            if (AStock.AmountInStock != 1) OK = false;
+            Assert.IsTrue(OK);
+
+        }
+        public void TestGenre()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 GameID = 1;
+            Found = AStock.Find(GameID);
+            if (AStock.Genre != "action") OK = false;
+            Assert.IsTrue(OK);
+
+        }
+        public void TestReleaseDate()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 GameID = 1;
+            Found = AStock.Find(GameID);
+            if (AStock.ReleaseDate != new DateTime(0000, 00, 00)) OK = false;
+            Assert.IsTrue(OK);
+
+        }
+        public void TestSupplier()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 GameID = 1;
+            Found = AStock.Find(GameID);
+            if (AStock.Supplier != "supplier") OK = false;
+            Assert.IsTrue(OK);
+
+        }
+        public void TestInStock()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 GameID = 1;
+            Found = AStock.Find(GameID);
+            if (AStock.InStock != true) OK = false;
+            Assert.IsTrue(OK);
 
         }
 
+
     }
 
-    
+
+
+
 }
