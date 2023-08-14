@@ -8,15 +8,15 @@ namespace ClassLibrary
 {
     public class clsStock
     {
-                            // 1. make private variable
-                            // 2. get - return privatge variable
-                            // 3. set - assign value to private variable
-                            //done for all get/set methods, same code - diffeent private variable names, not writing unnecessary comments
-        private Int32 mID;                   
-        public int GameID 
-        { 
-            get{ return mID; }
-            set{ mID = value; } 
+        // 1. make private variable
+        // 2. get - return privatge variable
+        // 3. set - assign value to private variable
+        //done for all get/set methods, same code - diffeent private variable names, not writing unnecessary comments
+        private Int32 mID;
+        public int GameID
+        {
+            get { return mID; }
+            set { mID = value; }
         }
         private string mGameName;
         public string GameName
@@ -77,6 +77,42 @@ namespace ClassLibrary
             mSupplier = "supplier";
             mInStock = true;
             return true;
+        }
+
+        public string Valid(string GameID, string GameName, string GamePrice, string AmountInStock, string Genre, string ReleaseDate, string Supplier, string InStock)
+        {
+            // create a string variable to store the error
+            String Error = "";
+            // if the GameID is blank
+            if (GameID.Length == 0)
+            {
+                // record the Error
+                Error = Error + "The ID of the game should not be blank";
+            }
+            if (GameName.Length == 0)
+            {
+                Error = Error + "The name of the game should not be blank";
+            }
+            if (GamePrice.Length == 0)
+            {
+                Error = Error + "The price of the game should not be blank";
+            }
+            if (AmountInStock.Length == 0)
+            {
+                Error = Error + "The amount in stock of the game should not be blank";
+            }
+            if (Genre.Length == 0)
+            {
+                Error = Error + "The genre of the game should not be blank";
+            }
+            if (Supplier.Length == 0)
+            {
+                Error = Error + "The supplier of the game should not be blank";
+            }
+            
+
+            // return any error messages
+            return Error;
         }
     }
 }

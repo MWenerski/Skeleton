@@ -106,7 +106,7 @@ namespace Testing1
             TestItem.DateAdded = DateTime.Today.Date;
 
             //Add() should jump to Collection but jomps to clsCustomer
-            AllCustomers.ThisCustomer.Add();
+            //AllCustomers.ThisCustomer.Add();
             TestItem.CustomerID = PrimaryKey;
             AllCustomers.ThisCustomer.Find(PrimaryKey);
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);

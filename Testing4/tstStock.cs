@@ -6,6 +6,7 @@ namespace Testing4
     [TestClass]
     public class tstStock
     {
+       
         [TestMethod]
         public void InstanceOK()
         {
@@ -166,6 +167,98 @@ namespace Testing4
 
         }
 
+
+
+
+
+
+        ///
+        /// ///////////////////////
+        /// 
+
+
+        //good test data
+        //create some test data to pass to the method
+           string GameID = "1";
+           string GameName = "abc";
+           string GamePrice = "10.00";
+           string AmountInStock = "1";
+           string Genre = "Action";
+           string ReleaseDate = new DateTime(2002,09,11).ToString();
+           string Supplier = "Game Co.";
+           string InStock = "true";
+          ///
+
+        public string Valid(string GameID, string GameName, string GamePrice, string AmountInStock, string Genre, string ReleaseDate, string Supplier, string InStock)
+        {
+            // create a string variable to store the error
+            String Error = "";
+            // if the GameID is blank
+            if (GameID.Length == 0)
+            {
+                Error = Error + "The ID of the game should not be blank";
+            }
+            // return error messages
+            return Error;
+        }
+
+
+
+
+
+        public void GameIDExtremeMin()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            string GameID = "";
+            Error = Stock.Valid(GameID, GameName, GamePrice, AmountInStock, Genre, ReleaseDate, Supplier, InStock);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        public void GameIDMin()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            string GameID = "a";
+            Error = Stock.Valid(GameID, GameName, GamePrice, AmountInStock, Genre, ReleaseDate, Supplier, InStock);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        public void GameIDMinadd1()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            string GameID = "a";
+            Error = Stock.Valid(GameID, GameName, GamePrice, AmountInStock, Genre, ReleaseDate, Supplier, InStock);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        public void GameIDMaxmin1()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            string GameID = "aaaaaaaaa";
+            Error = Stock.Valid(GameID, GameName, GamePrice, AmountInStock, Genre, ReleaseDate, Supplier, InStock);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        public void GameIDMax()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            string GameID = "aaaaaaaaaa";
+            Error = Stock.Valid(GameID, GameName, GamePrice, AmountInStock, Genre, ReleaseDate, Supplier, InStock);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        public void GameIDMaxadd1()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            string GameID = "aaaaaaaaaaa";
+            Error = Stock.Valid(GameID, GameName, GamePrice, AmountInStock, Genre, ReleaseDate, Supplier, InStock);
+            Assert.AreNotEqual(Error, "");
+        }
 
     }
 
