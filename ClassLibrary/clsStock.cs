@@ -81,14 +81,29 @@ namespace ClassLibrary
 
         public string Valid(string GameID, string GameName, string GamePrice, string AmountInStock, string Genre, string ReleaseDate, string Supplier, string InStock)
         {
-            // create a string variable to store the error
             String Error = "";
-            // if the GameID is blank
-            if (GameID.Length == 0)
+            Int32 TempNum;
+
+            try
             {
-                // record the Error
-                Error = Error + "The ID of the game should not be blank";
+                TempNum = Convert.ToInt32(GameID);
+                if (TempNum < 0)
+                {
+                    Error = Error + "The Game ID has to be larger than 0";
+                }
+
             }
+            catch (OverflowException)
+            {
+                Error = Error + "The Game ID is too large";
+                
+            }
+            catch (FormatException)
+            {
+                Error = Error + "The Game ID is not a valid value";
+            }
+           
+            /*
             if (GameName.Length == 0)
             {
                 Error = Error + "The name of the game should not be blank";
@@ -109,7 +124,7 @@ namespace ClassLibrary
             {
                 Error = Error + "The supplier of the game should not be blank";
             }
-            
+            */
 
             // return any error messages
             return Error;

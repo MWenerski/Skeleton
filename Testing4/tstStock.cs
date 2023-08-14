@@ -89,6 +89,7 @@ namespace Testing4
             Assert.IsTrue(OK);
 
         }
+        [TestMethod]
         public void TestGameName()
         {
             clsStock AStock = new clsStock();
@@ -100,6 +101,7 @@ namespace Testing4
             Assert.IsTrue(OK);
 
         }
+        [TestMethod]
         public void TestGamePrice()
         {
             clsStock AStock = new clsStock();
@@ -111,6 +113,7 @@ namespace Testing4
             Assert.IsTrue(OK);
 
         }
+        [TestMethod]
         public void TestAmountInStock()
         {
             clsStock AStock = new clsStock();
@@ -122,6 +125,7 @@ namespace Testing4
             Assert.IsTrue(OK);
 
         }
+        [TestMethod]
         public void TestGenre()
         {
             clsStock AStock = new clsStock();
@@ -133,6 +137,7 @@ namespace Testing4
             Assert.IsTrue(OK);
 
         }
+        [TestMethod]
         public void TestReleaseDate()
         {
             clsStock AStock = new clsStock();
@@ -140,10 +145,11 @@ namespace Testing4
             Boolean OK = true;
             Int32 GameID = 1;
             Found = AStock.Find(GameID);
-            if (AStock.ReleaseDate != new DateTime(0000, 00, 00)) OK = false;
+            if (AStock.ReleaseDate != new DateTime(00, 00, 0000)) OK = false;
             Assert.IsTrue(OK);
 
         }
+        [TestMethod]
         public void TestSupplier()
         {
             clsStock AStock = new clsStock();
@@ -155,6 +161,7 @@ namespace Testing4
             Assert.IsTrue(OK);
 
         }
+        [TestMethod]
         public void TestInStock()
         {
             clsStock AStock = new clsStock();
@@ -187,25 +194,11 @@ namespace Testing4
            string ReleaseDate = new DateTime(2002,09,11).ToString();
            string Supplier = "Game Co.";
            string InStock = "true";
-          ///
+        ///
 
-        public string Valid(string GameID, string GameName, string GamePrice, string AmountInStock, string Genre, string ReleaseDate, string Supplier, string InStock)
-        {
-            // create a string variable to store the error
-            String Error = "";
-            // if the GameID is blank
-            if (GameID.Length == 0)
-            {
-                Error = Error + "The ID of the game should not be blank";
-            }
-            // return error messages
-            return Error;
-        }
+       
 
-
-
-
-
+        [TestMethod]
         public void GameIDExtremeMin()
         {
             clsStock Stock = new clsStock();
@@ -215,49 +208,64 @@ namespace Testing4
             Assert.AreNotEqual(Error, "");
         }
 
+        [TestMethod]
         public void GameIDMin()
         {
             clsStock Stock = new clsStock();
             String Error = "";
-            string GameID = "a";
+            string GameID = "1";
             Error = Stock.Valid(GameID, GameName, GamePrice, AmountInStock, Genre, ReleaseDate, Supplier, InStock);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
+        [TestMethod]
         public void GameIDMinadd1()
         {
             clsStock Stock = new clsStock();
             String Error = "";
-            string GameID = "a";
+            string GameID = "2";
             Error = Stock.Valid(GameID, GameName, GamePrice, AmountInStock, Genre, ReleaseDate, Supplier, InStock);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
+        [TestMethod]
         public void GameIDMaxmin1()
         {
             clsStock Stock = new clsStock();
             String Error = "";
-            string GameID = "aaaaaaaaa";
+            string GameID = "2147483646";
             Error = Stock.Valid(GameID, GameName, GamePrice, AmountInStock, Genre, ReleaseDate, Supplier, InStock);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
+        [TestMethod]
         public void GameIDMax()
         {
             clsStock Stock = new clsStock();
             String Error = "";
-            string GameID = "aaaaaaaaaa";
+            string GameID = "2147483647";
             Error = Stock.Valid(GameID, GameName, GamePrice, AmountInStock, Genre, ReleaseDate, Supplier, InStock);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
+        [TestMethod]
         public void GameIDMaxadd1()
         {
             clsStock Stock = new clsStock();
             String Error = "";
-            string GameID = "aaaaaaaaaaa";
+            string GameID = "2147483648";
             Error = Stock.Valid(GameID, GameName, GamePrice, AmountInStock, Genre, ReleaseDate, Supplier, InStock);
             Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void GameIDMid()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            string GameID = "1073741824";
+            Error = Stock.Valid(GameID, GameName, GamePrice, AmountInStock, Genre, ReleaseDate, Supplier, InStock);
+            Assert.AreEqual(Error, "");
         }
 
     }
